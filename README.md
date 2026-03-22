@@ -61,15 +61,13 @@ The protocol operates across three layers: a web dashboard for human oversight, 
 
 ## Smart Contracts
 
-**Identity.sol** — The ERC-8004 soulbound identity contract. Each Digital Self is bound to a real person's wallet address. The identity stores a ZK proof hash that verifies the person's off-chain credit without exposing private data. The real person can deactivate or freeze the Digital Self at any time.
-
-**CreditScore.sol** — The dual-layer credit scoring engine. It computes a composite score from two sources: a ZK-verified off-chain base (Experian score, bank balance, employment) and an on-chain behavioral score (repayment history, transaction patterns). The weight dynamically shifts — starting at 100% off-chain for cold-start, gradually moving toward on-chain as the Digital Self builds history. Minimum off-chain weight is 20%, ensuring the real-person anchor is never fully removed.
-
-**Guardrails.sol** — Behavioral safety constraints that protect the real person. The owner sets maximum borrow limits, per-transaction caps, and daily spending limits. The contract enforces these rules on every borrow attempt and can freeze the Digital Self entirely in emergencies. Guardrails also track outstanding debt and daily spending with automatic resets.
-
-**LendingPool.sol** — A credit-based lending pool with a Jump Rate interest model inspired by Compound. Below 80% utilization, interest rates rise gradually. Above 80%, rates spike steeply to protect liquidity. The effective rate is the higher of the pool rate and a credit-score-based floor (better score = lower floor). 10% of all interest goes to a risk reserve fund.
-
-**RevenueEscrow.sol** — Revenue custody and automatic repayment. When a Digital Self earns income, the revenue flows into escrow first. A configurable percentage (e.g., 50%) is automatically allocated to loan repayment. The remainder is available to the agent. If the agent defaults, the real person can force-reclaim all escrowed funds.
+| Contract | Description |
+|:---------|:------------|
+| **Identity.sol** | ERC-8004 soulbound identity. Binds Digital Self to real person, stores ZK proof hash. Owner can deactivate or freeze at any time. |
+| **CreditScore.sol** | Dual-layer scoring engine. Composite of ZK off-chain base + on-chain behavior. Weight shifts from 100% off-chain (cold-start) toward on-chain as history builds. Min 20% off-chain anchor. |
+| **Guardrails.sol** | Behavioral safety. Max borrow limits, per-tx caps, daily spending limits. Enforced on every borrow. Emergency freeze. Auto-reset daily tracking. |
+| **LendingPool.sol** | Jump Rate interest model. Below 80% utilization: gradual rates. Above 80%: steep spike. Effective rate = max(pool rate, credit floor). 10% interest → risk reserve. |
+| **RevenueEscrow.sol** | Revenue custody. Configurable auto-split (e.g. 50%) between repayment and agent funds. Force-reclaim on default. |
 
 ---
 
@@ -77,15 +75,13 @@ The protocol operates across three layers: a web dashboard for human oversight, 
 
 Five agents coordinate the full lending lifecycle without human intervention:
 
-**CreditAgent** — Evaluates the Digital Self's creditworthiness by reading on-chain credit data. Calculates a risk band (EXCELLENT / GOOD / FAIR / POOR / HIGH), checks for past defaults, and recommends maximum loan amounts. Agents with any defaults are automatically ineligible.
-
-**LendingAgent** — Processes loan applications end-to-end. Runs guardrail checks (borrow limit, per-tx cap, pool liquidity), calculates the effective interest rate from the Jump Rate model, and executes the loan by calling the LendingPool contract. Returns full transaction details.
-
-**RevenueWatcher** — Monitors the Digital Self's wallet balance by polling every 15 seconds. When incoming revenue is detected and the balance exceeds the repayment threshold, it automatically triggers repayment through the LendingPool contract. Tracks repayment progress and reports events.
-
-**CollectionAgent** — Activates when loans become overdue. Checks all active loans against the current block number, freezes the agent's spending via Guardrails, and marks severely overdue loans (100+ blocks) as defaulted. Determines whether escalation to the real person is needed.
-
-**EscalationAgent** — The last resort. Notifies the real person (wallet owner) that their Digital Self has defaulted. Force-reclaims any funds in the RevenueEscrow. Deactivates the Digital Self entirely. The real person must resolve the outstanding debt before the Digital Self can be reactivated.
+| Agent | Role |
+|:------|:-----|
+| **CreditAgent** | Evaluates creditworthiness. Calculates risk band (EXCELLENT → HIGH), checks defaults, recommends max loan. |
+| **LendingAgent** | Processes applications. Runs guardrail checks, calculates Jump Rate, executes loan from pool. |
+| **RevenueWatcher** | Monitors agent wallet (15s polling). Detects income, triggers auto-repayment when threshold met. |
+| **CollectionAgent** | Handles overdue loans. Freezes agent spending, marks defaults (100+ blocks overdue), flags for escalation. |
+| **EscalationAgent** | Last resort. Notifies real person, force-reclaims escrow, deactivates Digital Self. Owner must resolve debt to reactivate. |
 
 ---
 
