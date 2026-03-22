@@ -1,9 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" fill="none">
-  <rect width="800" height="280" fill="#131313"/>
-  <text x="400" y="100" text-anchor="middle" font-family="monospace" font-size="48" font-weight="bold" fill="#00FF41">██████╗  █████╗ ██████╗  █████╗ ██╗     ██╗     ███████╗██╗</text>
-  <!-- Simplified: use plain text instead of block chars for cleaner SVG -->
-  <text x="400" y="80" text-anchor="middle" font-family="'Space Grotesk', 'Courier New', monospace" font-size="72" font-weight="700" fill="#00FF41">PARALLEL</text>
-  <text x="400" y="160" text-anchor="middle" font-family="'Space Grotesk', 'Courier New', monospace" font-size="72" font-weight="700" fill="#00FF41">UNIVERSE</text>
-  <text x="400" y="210" text-anchor="middle" font-family="'Space Grotesk', 'Courier New', monospace" font-size="20" fill="#00FF41">&gt;_</text>
-  <text x="400" y="250" text-anchor="middle" font-family="'Space Grotesk', 'Courier New', monospace" font-size="16" fill="#b9ccb2">Your Digital Self deserves its own credit history.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="584" height="334">
+  <rect width="100%" height="100%" fill="#131313"/>
+  <text x="20" y="40" font-family="monospace" font-size="14" fill="#00FF41">██████╗  █████╗ ██████╗  █████╗ ██╗     ██╗     ███████╗██╗     </text>
+  <text x="20" y="58" font-family="monospace" font-size="14" fill="#00FF41">██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║     ██║     ██╔════╝██║     </text>
+  <text x="20" y="76" font-family="monospace" font-size="14" fill="#00FF41">██████╔╝███████║██████╔╝███████║██║     ██║     █████╗  ██║     </text>
+  <text x="20" y="94" font-family="monospace" font-size="14" fill="#00FF41">██╔═══╝ ██╔══██║██╔══██╗██╔══██║██║     ██║     ██╔══╝  ██║     </text>
+  <text x="20" y="112" font-family="monospace" font-size="14" fill="#00FF41">██║     ██║  ██║██║  ██║██║  ██║███████╗███████╗███████╗███████╗</text>
+  <text x="20" y="130" font-family="monospace" font-size="14" fill="#00FF41">╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝</text>
+  <text x="20" y="148" font-family="monospace" font-size="14" fill="#00FF41"></text>
+  <text x="20" y="166" font-family="monospace" font-size="14" fill="#00FF41">██╗   ██╗███╗   ██╗██╗██╗   ██╗███████╗██████╗ ███████╗███████╗</text>
+  <text x="20" y="184" font-family="monospace" font-size="14" fill="#00FF41">██║   ██║████╗  ██║██║██║   ██║██╔════╝██╔══██╗██╔════╝██╔════╝</text>
+  <text x="20" y="202" font-family="monospace" font-size="14" fill="#00FF41">██║   ██║██╔██╗ ██║██║██║   ██║█████╗  ██████╔╝███████╗█████╗  </text>
+  <text x="20" y="220" font-family="monospace" font-size="14" fill="#00FF41">██║   ██║██║╚██╗██║██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚════██║██╔══╝  </text>
+  <text x="20" y="238" font-family="monospace" font-size="14" fill="#00FF41">╚██████╔╝██║ ╚████║██║ ╚████╔╝ ███████╗██║  ██║███████║███████╗</text>
+  <text x="20" y="256" font-family="monospace" font-size="14" fill="#00FF41"> ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝</text>
+  <text x="292" y="294" text-anchor="middle" font-family="monospace" font-size="14" fill="#00FF41">>_ </text>
+  <text x="312" y="294" text-anchor="middle" font-family="monospace" font-size="14" fill="#b9ccb2">Your Digital Self deserves its own credit history.</text>
 </svg>
