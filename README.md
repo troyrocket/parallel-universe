@@ -1,9 +1,5 @@
 <p align="center">
-  <img src="parallel-universe/logo.png" alt="Parallel Universe" width="600">
-</p>
-
-<p align="center">
-  <em>>_ Your Digital Self deserves its own credit history.</em>
+  <img src="parallel-universe/assets/logo.svg" alt="Parallel Universe" width="700">
 </p>
 
 A blockchain-based dual-layer credit protocol that cold-starts an on-chain Digital Self with real-person credit, then builds an independent digital credit identity through on-chain economic behavior — enabling autonomous agent-level decentralized lending.
@@ -32,25 +28,8 @@ Mature  ░░░░░░██████████████  On-chain d
 Each Digital Self gets a unique avatar generated via [DiceBear](https://www.dicebear.com/) (notionists style), displayed as an identity card:
 
 <p align="center">
-  <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Alice-Explorer&backgroundType=gradientLinear,solid" width="200" alt="Digital Self Avatar">
+  <img src="parallel-universe/assets/avatar-card.svg" alt="Digital Self Avatar Card" width="400">
 </p>
-
-```
-┌──────────────────────────────────┐
-│                                  │
-│         [ DIGITAL SELF ]         │
-│                                  │
-│  NAME        Alice-Explorer      │
-│  ADDRESS     0xA3c8...7F2d       │
-│  STATUS      ACTIVE              │
-│  CREDIT      680 / 900           │
-│                                  │
-│  ┌────────┐  ┌─────────┐        │
-│  │ERC-8004│  │ZK_PROOF │        │
-│  └────────┘  └─────────┘        │
-│                                  │
-└──────────────────────────────────┘
-```
 
 ## Architecture
 

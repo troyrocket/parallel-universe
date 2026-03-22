@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" fill="none">
+  <rect width="400" height="520" fill="#1b1b1b"/>
+
+  <!-- Avatar -->
+  <rect x="100" y="30" width="200" height="200" stroke="#00FF41" stroke-width="2" fill="#2a2a2a"/>
+  <image x="100" y="30" width="200" height="200" href="https://api.dicebear.com/9.x/notionists/svg?seed=Alice-Explorer&amp;backgroundType=gradientLinear,solid"/>
+
+  <!-- Name -->
+  <text x="200" y="270" text-anchor="middle" font-family="'Space Grotesk', monospace" font-size="22" font-weight="700" fill="#00FF41">Alice-Explorer</text>
+
+  <!-- Fields -->
+  <text x="50" y="310" font-family="'Space Grotesk', monospace" font-size="11" letter-spacing="3" fill="#84967e">ADDRESS</text>
+  <text x="350" y="310" text-anchor="end" font-family="'Space Grotesk', monospace" font-size="13" fill="#e2e2e2">0xA3c8...7F2d</text>
+
+  <text x="50" y="345" font-family="'Space Grotesk', monospace" font-size="11" letter-spacing="3" fill="#84967e">STATUS</text>
+  <text x="350" y="345" text-anchor="end" font-family="'Space Grotesk', monospace" font-size="13" fill="#00FF41">ACTIVE</text>
+
+  <text x="50" y="380" font-family="'Space Grotesk', monospace" font-size="11" letter-spacing="3" fill="#84967e">CREDIT</text>
+  <text x="350" y="380" text-anchor="end" font-family="'Space Grotesk', monospace" font-size="13" fill="#e2e2e2">680 / 900</text>
+
+  <!-- Chips -->
+  <rect x="90" y="410" width="100" height="24" fill="#353535"/>
+  <rect x="90" y="410" width="2" height="24" fill="#00FF41"/>
+  <text x="100" y="426" font-family="'Space Grotesk', monospace" font-size="9" letter-spacing="2" fill="#00FF41">DIGITAL_SELF</text>
+
+  <rect x="210" y="410" width="80" height="24" fill="#353535"/>
+  <rect x="210" y="410" width="2" height="24" fill="#00FF41"/>
+  <text x="220" y="426" font-family="'Space Grotesk', monospace" font-size="9" letter-spacing="2" fill="#00FF41">ERC-8004</text>
+
+  <!-- Footer -->
+  <text x="200" y="480" text-anchor="middle" font-family="'Space Grotesk', monospace" font-size="11" fill="#84967e">&gt;_ PARALLEL_UNIVERSE</text>
+</svg>
