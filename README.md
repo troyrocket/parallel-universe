@@ -99,7 +99,7 @@ Deployed on **Ethereum Sepolia Testnet**:
 | **LendingPool.sol** | [`0x9C2282bB...02F3`](https://sepolia.etherscan.io/address/0x9C2282bB2Bf70fdC7Bd58016d4290798363602F3) | Jump Rate interest model. Below 80% utilization: gradual rates. Above 80%: steep spike. Effective rate = max(pool rate, credit floor). 10% interest → risk reserve. |
 | **RevenueEscrow.sol** | *pending* | Revenue custody. Configurable auto-split (e.g. 50%) between repayment and agent funds. Force-reclaim on default. |
 
-### Autonomous Agents
+### Multi-Agent Coordination Layer
 
 Five agents coordinate the full lending lifecycle without human intervention:
 
