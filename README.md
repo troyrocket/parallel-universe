@@ -189,11 +189,11 @@ The demo walks through the complete lifecycle of a Digital Self in 8 scenes:
 
 ---
 
----
-
 ## Team
 
 **Troy Yan** — Founder. Software engineer in San Francisco. CS @Penn. ex-ByteDance. Backed by Tether Founder (Brock Pierce, DNA Fund).
+
+---
 
 ## License
 
