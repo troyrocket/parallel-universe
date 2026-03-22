@@ -89,11 +89,11 @@ Five agents coordinate the full lending lifecycle without human intervention:
 
 ## Key Differentiators
 
-**Real-person accountability** — Other agent credit projects score agents based on on-chain behavior alone. But a defaulting agent can just create a new wallet. Parallel Universe ties every Digital Self to a real person who bears the financial consequences — the same model that makes traditional credit work.
+**Real-person accountability** — Every Digital Self is tied to a real person who bears the financial consequences. If an agent defaults, the system freezes it, reclaims escrowed funds, and holds the real person responsible. This is what makes credit meaningful.
 
-**Full financial stack, not just scoring** — We don't stop at credit scores. We provide the complete banking layer: identity → credit → lending → revenue management → collection → escalation. Your Digital Self can borrow, earn, repay, and grow — autonomously.
+**Full financial stack** — Identity → credit → lending → revenue management → collection → escalation. Your Digital Self can borrow, earn, repay, and grow — autonomously.
 
-**Under-collateralized lending** — DeFi lending today requires 150%+ collateral. That's useless for agents that need working capital. Parallel Universe enables credit-based lending with no collateral — backed by real-person credit instead of locked assets.
+**Under-collateralized lending** — Credit-based lending with no collateral required. Your real-world credit history is the backing, not locked assets.
 
 ---
 
