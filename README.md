@@ -2,199 +2,220 @@
   <img src="parallel-universe/assets/logo.svg" alt="Parallel Universe">
 </p>
 
-<p align="center"><em>Your Digital Self deserves its own credit history.</em></p>
+<p align="center">
+  <em>Your Digital Self deserves its own credit history.</em>
+</p>
 
-A blockchain-based dual-layer credit protocol that cold-starts an on-chain Digital Self with real-person credit, then builds an independent digital credit identity through on-chain economic behavior — enabling autonomous agent-level decentralized lending.
+<p align="center">
+  <a href="#quick-start">Quick Start</a> &nbsp;&middot;&nbsp;
+  <a href="#demo-flow">Demo</a> &nbsp;&middot;&nbsp;
+  <a href="#architecture">Architecture</a> &nbsp;&middot;&nbsp;
+  <a href="#smart-contracts">Contracts</a> &nbsp;&middot;&nbsp;
+  <a href="#autonomous-agents">Agents</a>
+</p>
 
 ---
+
+A dual-layer credit protocol that cold-starts an on-chain **Digital Self** with real-person credit, then builds an independent digital credit identity through on-chain economic behavior — enabling autonomous agent-level decentralized lending.
+
+<br>
 
 ## The Problem
 
 AI agents are entering the on-chain economy — trading, borrowing, collaborating. But no protocol will extend credit to them, because **agents can be shut down and recreated at any time, bearing no consequences**.
 
-Pure on-chain credit doesn't work (no history). Pure off-chain mapping is too thin (just a shadow). There's no bridge between real-world trust and on-chain identity.
+No history. No identity. No accountability.
+
+<br>
 
 ## The Solution
 
 **Use real-person credit to underwrite a Digital Self, while the Digital Self accumulates its own on-chain credit history.**
 
-Think of it like an immigrant's credit journey: rely on home-country credit at first, then gradually build local credit history until it becomes the primary reference.
+Like an immigrant's credit journey — rely on home-country credit at first, then gradually build local history until it becomes the primary reference.
 
 ```
-Early   ██████████████░░░░░░  Off-chain dominates (cold-start anchor)
-Mature  ░░░░░░██████████████  On-chain dominates (independent credit entity)
+Early    ██████████████░░░░░░   Off-chain dominates (cold-start)
+Mature   ░░░░░░██████████████   On-chain dominates (independent)
 ```
 
-## Digital Self Avatar
+<br>
 
-Each Digital Self gets a unique avatar generated via [DiceBear](https://www.dicebear.com/) (notionists style), displayed as an identity card:
+## Digital Self
+
+Each Digital Self gets a unique identity — an ERC-8004 soulbound token with a generated avatar, credit score, and behavioral guardrails.
 
 <p align="center">
-  <img src="parallel-universe/assets/avatar-card.svg" alt="Digital Self Avatar Card" width="400">
+  <img src="parallel-universe/assets/avatar-card.svg" alt="Digital Self Avatar Card" width="360">
 </p>
+
+<br>
 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                  Web Dashboard                       │
-│          (Digital Self management, human-facing)     │
-└──────────────────────┬──────────────────────────────┘
-                       │
-┌──────────────────────┴──────────────────────────────┐
-│                  Agent Coordination                  │
-│                                                      │
-│  CreditAgent     LendingAgent     CollectionAgent    │
-│  (evaluation)    (execution)      (overdue handling) │
-│                                                      │
-│  RevenueWatcher   EscalationAgent                    │
-│  (income monitor)  (owner notify)                    │
-└──────────────────────┬──────────────────────────────┘
-                       │
-┌──────────────────────┴──────────────────────────────┐
-│                Smart Contracts                       │
-│                                                      │
-│  Identity.sol      CreditScore.sol   Guardrails.sol  │
-│  (ERC-8004)        (dual-layer)      (safety rules)  │
-│                                                      │
-│  LendingPool.sol   RevenueEscrow.sol                 │
-│  (Jump Rate model) (auto-repayment)                  │
-└─────────────────────────────────────────────────────┘
+                        ┌──────────────────┐
+                        │   Web Dashboard   │
+                        └────────┬─────────┘
+                                 │
+              ┌──────────────────┼──────────────────┐
+              │                  │                  │
+        CreditAgent       LendingAgent       RevenueWatcher
+        CollectionAgent   EscalationAgent
+              │                  │                  │
+              └──────────────────┼──────────────────┘
+                                 │
+         ┌───────────┬───────────┼───────────┬──────────┐
+         │           │           │           │          │
+     Identity   CreditScore  Guardrails  LendingPool  Revenue
+     (ERC-8004) (dual-layer) (safety)    (Jump Rate)  Escrow
 ```
+
+<br>
 
 ## Smart Contracts
 
 | Contract | Purpose |
-|----------|---------|
-| `Identity.sol` | ERC-8004 soulbound identity — binds Digital Self to real person, stores ZK proof |
-| `CreditScore.sol` | Dual-layer scoring: ZK off-chain base + on-chain behavior, dynamic weight shifting |
-| `Guardrails.sol` | Spending limits, per-tx caps, daily limits, emergency freeze |
-| `LendingPool.sol` | Credit-based lending with Jump Rate interest model, risk reserve |
-| `RevenueEscrow.sol` | Revenue custody — auto-splits income between repayment and agent funds |
+|:---------|:--------|
+| **Identity.sol** | ERC-8004 soulbound identity — binds Digital Self to real person, stores ZK proof |
+| **CreditScore.sol** | Dual-layer scoring — ZK off-chain base + on-chain behavior, dynamic weight shifting |
+| **Guardrails.sol** | Spending limits, per-tx caps, daily limits, emergency freeze |
+| **LendingPool.sol** | Credit-based lending — Jump Rate interest model, risk reserve |
+| **RevenueEscrow.sol** | Revenue custody — auto-splits income between repayment and agent |
+
+<br>
 
 ## Autonomous Agents
 
+Five agents coordinate the full lending lifecycle without human intervention:
+
 | Agent | Role |
-|-------|------|
-| `CreditAgent` | Evaluates creditworthiness, calculates risk band, recommends loan terms |
-| `LendingAgent` | Processes applications, checks guardrails, executes loans from pool |
-| `RevenueWatcher` | Monitors agent wallet for income, triggers auto-repayment |
-| `CollectionAgent` | Handles overdue loans — freezes agent, marks defaults |
-| `EscalationAgent` | Notifies real person, force-reclaims escrow, deactivates agent |
+|:------|:-----|
+| **CreditAgent** | Evaluates creditworthiness, calculates risk band, recommends terms |
+| **LendingAgent** | Processes applications, checks guardrails, executes loans |
+| **RevenueWatcher** | Monitors agent wallet for income, triggers auto-repayment |
+| **CollectionAgent** | Handles overdue loans — freezes agent, marks defaults |
+| **EscalationAgent** | Notifies real person, force-reclaims escrow, deactivates agent |
+
+<br>
 
 ## Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
-| Wallet | Tether WDK (`@tetherto/wdk`, `wdk-wallet-evm`) |
-| Smart Contracts | Solidity 0.8.24, Hardhat 3 |
-| Web Dashboard | Express.js + vanilla HTML/CSS/JS |
-| CLI | Node.js, chalk, ora, figlet |
-| Avatar | DiceBear API (notionists style) |
-| ZK Verification | Simulated (production: Reclaim Protocol / tlsnotary) |
-| Chain | EVM-compatible (Sepolia testnet / localhost) |
+|:------|:-----------|
+| Wallet | Tether WDK |
+| Contracts | Solidity 0.8.24, Hardhat 3 |
+| Dashboard | Express.js + HTML/CSS/JS |
+| CLI | Node.js, chalk, figlet |
+| Avatar | DiceBear (notionists) |
+| ZK | Simulated (prod: Reclaim Protocol) |
+| Chain | EVM (Sepolia / localhost) |
+
+<br>
 
 ## Quick Start
 
 ```bash
 cd parallel-universe
-
-# Install dependencies
 npm install
-
-# Compile contracts
 npm run compile
-
-# Start local node (terminal 1)
-npm run dev
-
-# Deploy contracts (terminal 2)
-npm run deploy:local
-
-# Run the demo (terminal 2)
-npm start
-
-# Open web dashboard
-open http://localhost:3000
 ```
+
+**Terminal 1** — start local node:
+```bash
+npm run dev
+```
+
+**Terminal 2** — deploy and run:
+```bash
+npm run deploy:local
+npm start
+```
+
+Then open **http://localhost:3000** for the web dashboard.
+
+<br>
 
 ## Demo Flow
 
-The demo walks through the full lifecycle of a Digital Self in 8 scenes:
+8 scenes walking through the full lifecycle of a Digital Self:
 
-| Scene | What Happens | Agents Involved |
-|-------|-------------|-----------------|
-| 1. Boot Up | Logo, connect network, start dashboard, initialize 5 agents | — |
-| 2. Create Digital Self | WDK wallet + on-chain identity + DiceBear avatar card | — |
-| 3. ERC-8004 Identity | Mint soulbound identity token | — |
-| 4. Credit Verification | Experian 680 + JP Morgan $15K + ZK proof + escrow activation | — |
-| 5. First Loan | CreditAgent evaluates → LendingAgent executes (Jump Rate) | CreditAgent, LendingAgent |
-| 6. Revenue & Repayment | Agent earns income → RevenueWatcher detects → auto-repay → credit grows | RevenueWatcher |
-| 7. Guardrail & Collection | Over-borrow denied + collection/escalation scenario | CollectionAgent, EscalationAgent |
-| 8. Dashboard | Final overview — CLI + web dashboard at localhost:3000 | — |
+| # | Scene | What Happens |
+|:--|:------|:-------------|
+| 01 | **Boot Up** | Connect network, start dashboard, initialize 5 agents |
+| 02 | **Create Digital Self** | WDK wallet + on-chain identity + avatar |
+| 03 | **ERC-8004 Identity** | Mint soulbound identity token |
+| 04 | **Credit Verification** | Experian + JP Morgan + ZK proof |
+| 05 | **First Loan** | CreditAgent evaluates, LendingAgent executes |
+| 06 | **Revenue & Repayment** | Earn income, auto-repay, credit grows |
+| 07 | **Guardrail & Collection** | Over-borrow denied, escalation scenario |
+| 08 | **Dashboard** | Final overview |
+
+<br>
 
 ## Project Structure
 
 ```
-├── README.md
-├── parallel-universe/              # Core project
-│   ├── contracts/                  # Solidity smart contracts
-│   │   ├── Identity.sol
-│   │   ├── CreditScore.sol
-│   │   ├── Guardrails.sol
-│   │   ├── LendingPool.sol
-│   │   └── RevenueEscrow.sol
-│   ├── src/
-│   │   ├── index.js                # Main entry — 8-scene demo
-│   │   ├── server.js               # Express server for web dashboard
-│   │   ├── contracts.js            # Contract loading utilities
-│   │   ├── ui.js                   # CLI renderer (design system)
-│   │   └── agents/
-│   │       ├── CreditAgent.js
-│   │       ├── LendingAgent.js
-│   │       ├── RevenueWatcher.js
-│   │       ├── CollectionAgent.js
-│   │       └── EscalationAgent.js
-│   ├── web/                        # Web dashboard
-│   │   ├── index.html
-│   │   ├── style.css
-│   │   └── app.js
-│   ├── scripts/
-│   │   ├── deploy.js               # Sepolia deployment
-│   │   └── deploy-local.js         # Local hardhat deployment
-│   └── package.json
-└── design style/                   # Visual identity reference
+parallel-universe/
+├── contracts/                 # Solidity
+│   ├── Identity.sol
+│   ├── CreditScore.sol
+│   ├── Guardrails.sol
+│   ├── LendingPool.sol
+│   └── RevenueEscrow.sol
+├── src/
+│   ├── index.js               # 8-scene demo
+│   ├── server.js              # Web dashboard server
+│   ├── ui.js                  # CLI renderer
+│   ├── contracts.js
+│   └── agents/
+│       ├── CreditAgent.js
+│       ├── LendingAgent.js
+│       ├── RevenueWatcher.js
+│       ├── CollectionAgent.js
+│       └── EscalationAgent.js
+├── web/                       # Dashboard UI
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+└── scripts/
+    ├── deploy.js              # Sepolia
+    └── deploy-local.js        # Local
 ```
+
+<br>
 
 ## Roadmap
 
-- [x] Core smart contracts (Identity, CreditScore, Guardrails, LendingPool)
-- [x] RevenueEscrow with auto-repayment
+- [x] Smart contracts — Identity, CreditScore, Guardrails, LendingPool, RevenueEscrow
 - [x] Jump Rate interest model
-- [x] WDK wallet integration
-- [x] 5 autonomous agents (Credit, Lending, Revenue, Collection, Escalation)
-- [x] CLI demo with 8-scene lifecycle
+- [x] 5 autonomous agents
+- [x] Tether WDK wallet integration
+- [x] CLI demo (8 scenes)
 - [x] Web dashboard
-- [x] DiceBear avatar generation
-- [x] Deploy to Sepolia testnet
-- [ ] Real ZK proof integration (Circom + Reclaim Protocol)
-- [ ] USDT integration via WDK token transfers
-- [ ] Multi-agent support (one person, multiple Digital Selves)
+- [x] DiceBear avatar
+- [x] Sepolia deployment
+- [ ] Real ZK proofs (Circom + Reclaim Protocol)
+- [ ] USDT via WDK token transfers
+- [ ] Multi-agent (one person, multiple Digital Selves)
 - [ ] Cross-chain credit portability
-- [ ] ML-based credit scoring model
+
+<br>
 
 ## Why Now
 
-- AI agent count is exploding (2025-2026)
-- Agents are starting to participate in real economic activity
-- No credit infrastructure exists on-chain — it's 100% over-collateralized or zero-trust
-- ZK technology is mature enough to bridge off-chain data
-- **These four conditions are true for the first time, right now.**
+AI agents are exploding. They're starting to participate in real economic activity. But no credit infrastructure exists on-chain — it's 100% over-collateralized or zero-trust. ZK technology is finally mature enough to bridge off-chain data.
 
-## Team
+**These four conditions are true for the first time, right now.**
 
-**Troy Yan** — Founder
+<br>
 
-## License
+---
 
-MIT
+<p align="center">
+  <strong>Troy Yan</strong> — Founder
+</p>
+
+<p align="center">
+  <sub>MIT License</sub>
+</p>
