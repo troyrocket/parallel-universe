@@ -160,7 +160,9 @@ npm run deploy:local
 npm start
 ```
 
-Open **http://localhost:3000** in your browser for the web dashboard, or try the hosted version at **[troyrocket.github.io/parallel-universe](https://troyrocket.github.io/parallel-universe/)**.
+| Local | `http://localhost:3000` |
+|:------|:-----------------------|
+| Hosted | [troyrocket.github.io/parallel-universe](https://troyrocket.github.io/parallel-universe/) |
 
 ---
 
