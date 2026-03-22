@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="parallel-universe/assets/logo.svg" alt="Parallel Universe" width="700">
-</p>
+<img src="parallel-universe/assets/logo.svg" alt="Parallel Universe" width="100%">
 
 ---
 
