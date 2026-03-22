@@ -1,22 +1,10 @@
-# Parallel Universe
+<p align="center">
+  <img src="parallel-universe/logo.png" alt="Parallel Universe" width="600">
+</p>
 
-```
-██████╗  █████╗ ██████╗  █████╗ ██╗     ██╗     ███████╗██╗
-██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║     ██║     ██╔════╝██║
-██████╔╝███████║██████╔╝███████║██║     ██║     █████╗  ██║
-██╔═══╝ ██╔══██║██╔══██╗██╔══██║██║     ██║     ██╔══╝  ██║
-██║     ██║  ██║██║  ██║██║  ██║███████╗███████╗███████╗███████╗
-╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝
-
-██╗   ██╗███╗   ██╗██╗██╗   ██╗███████╗██████╗ ███████╗███████╗
-██║   ██║████╗  ██║██║██║   ██║██╔════╝██╔══██╗██╔════╝██╔════╝
-██║   ██║██╔██╗ ██║██║██║   ██║█████╗  ██████╔╝███████╗█████╗
-██║   ██║██║╚██╗██║██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚════██║██╔══╝
-╚██████╔╝██║ ╚████║██║ ╚████╔╝ ███████╗██║  ██║███████║███████╗
- ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝
-
->_ Your Digital Self deserves its own credit history.
-```
+<p align="center">
+  <em>>_ Your Digital Self deserves its own credit history.</em>
+</p>
 
 A blockchain-based dual-layer credit protocol that cold-starts an on-chain Digital Self with real-person credit, then builds an independent digital credit identity through on-chain economic behavior — enabling autonomous agent-level decentralized lending.
 
