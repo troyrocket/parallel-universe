@@ -87,6 +87,8 @@ Under the hood, five autonomous agents coordinate the full lending lifecycle —
 | ZK Verification | Simulated (production: Reclaim Protocol / tlsnotary) |
 | Chain | EVM-compatible (Sepolia testnet / localhost) |
 
+We integrate [Tether WDK](https://docs.wdk.tether.io/) as the wallet infrastructure for every Digital Self. When a Digital Self is created, WDK generates a self-custodial EVM wallet from a BIP-39 seed phrase — no server ever touches the private key. The Digital Self uses this wallet to receive loan disbursements, hold earned revenue, and sign repayment transactions. WDK's unified API handles all on-chain interactions across multiple EVM chains, and its MCP toolkit enables AI agents to perform wallet operations autonomously.
+
 ### Smart Contracts
 
 Deployed on **Ethereum Sepolia Testnet**:
