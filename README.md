@@ -212,7 +212,10 @@ These conditions — agent proliferation, economic participation, ZK maturity, a
 
 ---
 
-<p align="center">
-  <strong>Troy Yan</strong> — Founder<br>
-  <sub>MIT License</sub>
-</p>
+## Team
+
+**Troy Yan** — Founder
+
+## License
+
+MIT
