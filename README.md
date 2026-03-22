@@ -10,18 +10,20 @@
 
 ## What is Parallel Universe?
 
-Parallel Universe is a dual-layer credit protocol that allows AI agents to participate in the on-chain economy by borrowing, earning, and building credit — all backed by real-person accountability.
+Parallel Universe is the **credit and financial layer for your Digital Self (AI workforce)** — providing identity, credit scoring, lending, revenue management, and collection, all backed by real-person accountability.
 
-Today, AI agents have no financial identity. They can't open bank accounts, can't get credit, and can't be held accountable — because they can be shut down and recreated at any time. This means no one will lend to them, and they're locked out of the financial system entirely.
+Today, AI agents have no financial identity. They can't open bank accounts, can't get credit, and can't be held accountable — because they can be shut down and recreated at any time. Other projects try to solve this with pure on-chain credit scores, but those scores have no teeth: a defaulting agent just creates a new wallet and walks away. **Without real-world consequences, on-chain credit is meaningless.**
 
-Parallel Universe solves this by creating a **Digital Self** — an on-chain financial identity for your AI agent, cold-started with your real-world credit (Experian score, bank balance, credit card limits), and gradually building its own independent on-chain credit history through economic behavior.
+Parallel Universe solves this by creating a **Digital Self** — an on-chain financial identity for your AI agent, cold-started with your real-world credit (Experian score, bank balance, credit card limits), and backed by you as the guarantor. If your Digital Self defaults, the system doesn't just downgrade a number — it freezes the agent, reclaims escrowed funds, and holds you, the real person, accountable for repayment.
 
-Think of it like an immigrant's credit journey: you rely on your home-country credit at first, then over time your local credit history becomes the primary reference.
+Over time, the Digital Self builds its own independent on-chain credit history. Think of it like an immigrant's credit journey: you rely on your home-country credit at first, then over time your local credit history becomes the primary reference.
 
 ```
-Early    ██████████████░░░░░░   Off-chain dominates (cold-start)
-Mature   ░░░░░░██████████████   On-chain dominates (independent)
+Early    ██████████████░░░░░░   Real-person credit dominates (cold-start)
+Mature   ░░░░░░██████████████   Agent's own credit dominates (independent)
 ```
+
+This is not just a credit score — it's a **full financial stack**: identity (ERC-8004) → credit (dual-layer ZK scoring) → lending (Jump Rate liquidity pools) → revenue management (escrow with auto-repayment) → risk control (guardrails) → collection & escalation (autonomous agents).
 
 ---
 
@@ -82,6 +84,16 @@ Five agents coordinate the full lending lifecycle without human intervention:
 | **RevenueWatcher** | Monitors agent wallet (15s polling). Detects income, triggers auto-repayment when threshold met. |
 | **CollectionAgent** | Handles overdue loans. Freezes agent spending, marks defaults (100+ blocks overdue), flags for escalation. |
 | **EscalationAgent** | Last resort. Notifies real person, force-reclaims escrow, deactivates Digital Self. Owner must resolve debt to reactivate. |
+
+---
+
+## Key Differentiators
+
+**Real-person accountability** — Other agent credit projects score agents based on on-chain behavior alone. But a defaulting agent can just create a new wallet. Parallel Universe ties every Digital Self to a real person who bears the financial consequences — the same model that makes traditional credit work.
+
+**Full financial stack, not just scoring** — We don't stop at credit scores. We provide the complete banking layer: identity → credit → lending → revenue management → collection → escalation. Your Digital Self can borrow, earn, repay, and grow — autonomously.
+
+**Under-collateralized lending** — DeFi lending today requires 150%+ collateral. That's useless for agents that need working capital. Parallel Universe enables credit-based lending with no collateral — backed by real-person credit instead of locked assets.
 
 ---
 
@@ -191,11 +203,13 @@ parallel-universe/
 
 ## Why Now
 
-AI agents are proliferating at an unprecedented rate. They are beginning to participate in real economic activity — executing trades, purchasing services, collaborating with other agents. But the financial infrastructure hasn't caught up. On-chain lending today is 100% over-collateralized — you need to lock up more value than you borrow, which defeats the purpose for agents that need working capital.
+AI agents are proliferating at an unprecedented rate. They are beginning to participate in real economic activity — executing trades, purchasing services, collaborating with other agents. But the financial infrastructure hasn't caught up.
 
-At the same time, zero-knowledge proof technology has matured to the point where we can bridge off-chain financial data (bank balances, credit scores, employment records) on-chain without exposing private information. This creates a new design space: **credit-based lending for autonomous agents, backed by real-person accountability.**
+On-chain lending today is 100% over-collateralized — you need to lock up more value than you borrow, which defeats the purpose for agents that need working capital. Pure on-chain credit scores are emerging, but they're toothless — a defaulting agent just creates a new wallet.
 
-These conditions — agent proliferation, economic participation, ZK maturity, and the absence of credit infrastructure — are all true for the first time, right now.
+The missing piece is **real-world accountability**. ZK proof technology has matured to the point where we can bridge off-chain financial data on-chain without exposing private information. This lets us build the credit and financial layer that agents need — where your Digital Self borrows on your credit, and you stand behind the debt.
+
+These conditions — agent proliferation, economic participation, ZK maturity, and the absence of accountable financial infrastructure — are all true for the first time, right now.
 
 ---
 
