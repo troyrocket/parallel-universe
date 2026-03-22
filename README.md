@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="parallel-universe/logo.png" alt="Parallel Universe" width="600">
+  <img src="parallel-universe/assets/logo.svg" alt="Parallel Universe">
 </p>
 
-<h3 align="center">Your Digital Self deserves its own credit history.</h3>
+<p align="center"><em>Your Digital Self deserves its own credit history.</em></p>
 
 A blockchain-based dual-layer credit protocol that cold-starts an on-chain Digital Self with real-person credit, then builds an independent digital credit identity through on-chain economic behavior — enabling autonomous agent-level decentralized lending.
 
