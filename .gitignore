@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+artifacts/
+cache/
+
+# Environment
+.env
+.env.local
+
+# Accelerator applications (private)
+Accelerator application/
+
+# Deployed addresses (local)
+**/addresses.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude
+.claude/
