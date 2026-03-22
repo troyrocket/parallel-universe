@@ -1,9 +1,5 @@
 <p align="center">
-  <img src="parallel-universe/assets/logo.svg" alt="Parallel Universe">
-</p>
-
-<p align="center">
-  <em>Your Digital Self deserves its own credit history.</em>
+  <img src="parallel-universe/assets/logo.svg" alt="Parallel Universe" width="700">
 </p>
 
 ---
