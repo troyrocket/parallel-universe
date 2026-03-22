@@ -32,16 +32,7 @@
     <div class="section-label">SYSTEM.STATUS(FLEET_OVERVIEW)</div>
     <h1 class="section-title"><span class="cursor">>_</span> DASHBOARD</h1>
 
-    <!-- Owner Info -->
-    <div class="card">
-      <div class="card-label">REAL PERSON</div>
-      <div class="info-row"><span class="ghost">OWNER</span><span>Troy Yan</span></div>
-      <div class="info-row"><span class="ghost">DIGITAL SELVES</span><span class="pulse" id="total-selves">3</span></div>
-      <div class="info-row"><span class="ghost">TOTAL CAPACITY</span><span class="pulse" id="total-capacity">18.5 ETH</span></div>
-      <div class="info-row"><span class="ghost">TOTAL OUTSTANDING</span><span id="total-outstanding">2,500 USDT</span></div>
-    </div>
-
-    <!-- Digital Self Fleet -->
+    <!-- Digital Self Fleet (top priority) -->
     <div class="card-label" style="margin-bottom: 1rem">MY DIGITAL SELVES</div>
     <div class="grid-3" id="fleet-grid">
       <!-- Populated by JS -->
@@ -52,7 +43,7 @@
       <div class="card-label">SELECTED DIGITAL SELF</div>
       <div class="grid-2">
         <div>
-          <div class="avatar-container">
+          <div class="avatar-container-lg">
             <img id="detail-avatar" src="" class="avatar-img">
           </div>
           <div class="info-row"><span class="ghost">NAME</span><span id="detail-name">—</span></div>
@@ -87,6 +78,15 @@
     <div class="card">
       <div class="card-label">ACTIVITY LOG</div>
       <div id="activity-log" class="activity-log"></div>
+    </div>
+
+    <!-- Owner Info (bottom) -->
+    <div class="card">
+      <div class="card-label">REAL PERSON (GUARANTOR)</div>
+      <div class="info-row"><span class="ghost">OWNER</span><span>Troy Yan</span></div>
+      <div class="info-row"><span class="ghost">DIGITAL SELVES</span><span class="pulse" id="total-selves">3</span></div>
+      <div class="info-row"><span class="ghost">TOTAL CAPACITY</span><span class="pulse" id="total-capacity">18.5 ETH</span></div>
+      <div class="info-row"><span class="ghost">TOTAL OUTSTANDING</span><span id="total-outstanding">2,500 USDT</span></div>
     </div>
   </section>
 
