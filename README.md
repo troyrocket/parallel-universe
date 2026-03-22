@@ -30,7 +30,13 @@ Mature   ░░░░░░██████████████   On-chain
 Each Digital Self is a unique on-chain identity — an ERC-8004 soulbound token bound to a real person, with a generated avatar, a dual-layer credit score, and programmable behavioral guardrails that protect the real person from agent misbehavior.
 
 <p align="center">
-  <img src="parallel-universe/assets/avatar-card.svg" alt="Digital Self Avatar Card" width="360">
+  <a href="https://troyrocket.github.io/parallel-universe/avatar.html">
+    <img src="parallel-universe/assets/avatar-card.svg" alt="Digital Self Avatar Card" width="360">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://troyrocket.github.io/parallel-universe/avatar.html">Try the interactive Avatar Card →</a>
 </p>
 
 The Digital Self can autonomously borrow from liquidity pools, earn revenue by completing tasks, repay loans automatically through a revenue escrow system, and build its own credit history over time — all without human intervention. If things go wrong, the system escalates to the real person.
@@ -45,7 +51,7 @@ The protocol operates across three layers: a web dashboard for human oversight, 
   <img src="parallel-universe/assets/architecture.svg" alt="Architecture" width="700">
 </p>
 
-**Layer 1: Web Dashboard** — A browser-based management interface where the real person can create Digital Selves, view credit scores, manage loans, and monitor collection status. Built with the Terminal Echo design system.
+**Layer 1: [Web Dashboard](https://troyrocket.github.io/parallel-universe/)** — A browser-based management interface where the real person can create Digital Selves, view credit scores, manage loans, and monitor collection status. Built with the Terminal Echo design system.
 
 **Layer 2: Agent Coordination** — Five autonomous agents that coordinate the entire lending lifecycle without human intervention. They evaluate credit, execute loans, monitor revenue, handle overdue loans, and escalate to the real person when things go wrong.
 
@@ -116,7 +122,7 @@ npm run deploy:local
 npm start
 ```
 
-Open **http://localhost:3000** in your browser for the web dashboard.
+Open **http://localhost:3000** in your browser for the web dashboard, or try the hosted version at **[troyrocket.github.io/parallel-universe](https://troyrocket.github.io/parallel-universe/)**.
 
 ---
 
@@ -133,7 +139,7 @@ The demo walks through the complete lifecycle of a Digital Self in 8 scenes:
 | 05 | **First Loan** | CreditAgent evaluates creditworthiness, LendingAgent executes loan from pool |
 | 06 | **Revenue & Repayment** | Agent earns 1.5 ETH from task, RevenueWatcher detects and auto-repays loan |
 | 07 | **Guardrail & Collection** | Agent attempts to over-borrow, denied by guardrails, escalation scenario shown |
-| 08 | **Dashboard** | Final overview of credit growth (680 → 702), weight shift, activity log |
+| 08 | **[Dashboard](https://troyrocket.github.io/parallel-universe/)** | Final overview of credit growth (680 → 702), weight shift, activity log |
 
 ---
 
@@ -176,8 +182,8 @@ parallel-universe/
 - [x] 5 autonomous agents for full lending lifecycle
 - [x] Tether WDK wallet integration
 - [x] 8-scene CLI demo with real on-chain transactions
-- [x] Web dashboard for Digital Self management
-- [x] DiceBear avatar generation
+- [x] [Web dashboard](https://troyrocket.github.io/parallel-universe/) for Digital Self management
+- [x] [DiceBear avatar generation](https://troyrocket.github.io/parallel-universe/avatar.html)
 - [x] Sepolia testnet deployment
 - [ ] Real ZK proofs via Circom circuits + Reclaim Protocol
 - [ ] USDT token transfers via WDK
