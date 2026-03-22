@@ -27,56 +27,59 @@
 <!-- Main Content -->
 <main>
 
-  <!-- Section: Dashboard -->
+  <!-- Section: Dashboard — Multi Digital Self Management -->
   <section id="dashboard" class="section active">
-    <div class="section-label">SYSTEM.STATUS(DASHBOARD)</div>
+    <div class="section-label">SYSTEM.STATUS(FLEET_OVERVIEW)</div>
     <h1 class="section-title"><span class="cursor">>_</span> DASHBOARD</h1>
 
-    <div class="grid-2">
-      <!-- Credit Score Card -->
-      <div class="card card-hero">
-        <div class="card-label">COMPOSITE CREDIT SCORE</div>
-        <div class="score-display" id="dash-score">—</div>
-        <div class="score-bar"><div class="score-bar-fill" id="dash-bar" style="width: 0%"></div></div>
-        <div class="score-meta">
-          <span><span class="ghost">ZK BASE</span> <span id="dash-zk">—</span></span>
-          <span><span class="ghost">ON-CHAIN</span> <span id="dash-onchain">—</span></span>
-        </div>
-      </div>
-
-      <!-- Identity Card -->
-      <div class="card">
-        <div class="card-label">DIGITAL SELF</div>
-        <div class="avatar-container">
-          <img id="dash-avatar" src="" alt="avatar" class="avatar-img">
-        </div>
-        <div class="info-row"><span class="ghost">NAME</span><span id="dash-name">—</span></div>
-        <div class="info-row"><span class="ghost">ADDRESS</span><span id="dash-address" class="dim">—</span></div>
-        <div class="info-row"><span class="ghost">STATUS</span><span id="dash-status" class="pulse">—</span></div>
-        <div class="chip-row">
-          <span class="chip">DIGITAL_SELF</span>
-          <span class="chip">ERC-8004</span>
-        </div>
-      </div>
+    <!-- Owner Info -->
+    <div class="card">
+      <div class="card-label">REAL PERSON</div>
+      <div class="info-row"><span class="ghost">OWNER</span><span>Troy Yan</span></div>
+      <div class="info-row"><span class="ghost">DIGITAL SELVES</span><span class="pulse" id="total-selves">3</span></div>
+      <div class="info-row"><span class="ghost">TOTAL CAPACITY</span><span class="pulse" id="total-capacity">18.5 ETH</span></div>
+      <div class="info-row"><span class="ghost">TOTAL OUTSTANDING</span><span id="total-outstanding">2,500 USDT</span></div>
     </div>
 
-    <!-- Stats Row -->
-    <div class="grid-4">
-      <div class="stat-card">
-        <div class="stat-label">CAPACITY</div>
-        <div class="stat-value pulse" id="dash-capacity">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">ACTIVE LOANS</div>
-        <div class="stat-value" id="dash-active-loans">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">TOTAL BORROWED</div>
-        <div class="stat-value" id="dash-total-borrowed">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">RISK LEVEL</div>
-        <div class="stat-value pulse" id="dash-risk">—</div>
+    <!-- Digital Self Fleet -->
+    <div class="card-label" style="margin-bottom: 1rem">MY DIGITAL SELVES</div>
+    <div class="grid-3" id="fleet-grid">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Selected Digital Self Detail -->
+    <div class="card" id="selected-detail" style="display: none">
+      <div class="card-label">SELECTED DIGITAL SELF</div>
+      <div class="grid-2">
+        <div>
+          <div class="avatar-container">
+            <img id="detail-avatar" src="" class="avatar-img">
+          </div>
+          <div class="info-row"><span class="ghost">NAME</span><span id="detail-name">—</span></div>
+          <div class="info-row"><span class="ghost">ADDRESS</span><span id="detail-address" class="dim">—</span></div>
+          <div class="info-row"><span class="ghost">STATUS</span><span id="detail-status" class="pulse">—</span></div>
+          <div class="chip-row">
+            <span class="chip">DIGITAL_SELF</span>
+            <span class="chip">ERC-8004</span>
+          </div>
+        </div>
+        <div>
+          <div class="card-label">CREDIT SCORE</div>
+          <div class="score-display" id="detail-score">—</div>
+          <div class="score-bar"><div class="score-bar-fill" id="detail-bar" style="width: 0%"></div></div>
+          <div class="score-meta">
+            <span><span class="ghost">ZK BASE</span> <span id="detail-zk">—</span></span>
+            <span><span class="ghost">ON-CHAIN</span> <span id="detail-onchain">—</span></span>
+          </div>
+          <div style="margin-top: 1.5rem">
+            <div class="info-row"><span class="ghost">CAPACITY</span><span class="pulse" id="detail-capacity">—</span></div>
+            <div class="info-row"><span class="ghost">ACTIVE LOANS</span><span id="detail-loans">—</span></div>
+            <div class="info-row"><span class="ghost">RISK</span><span id="detail-risk" class="pulse">—</span></div>
+          </div>
+          <div style="margin-top: 1.5rem">
+            <button class="btn-secondary" onclick="freezeSelected()">[ FREEZE ]</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -95,13 +98,13 @@
     <div class="card card-form">
       <div class="form-group">
         <label class="form-label">AGENT NAME</label>
-        <input type="text" id="agent-name" class="form-input" placeholder="Enter agent name_" value="Alice-Explorer">
+        <input type="text" id="agent-name" class="form-input" placeholder="Enter agent name_" value="">
       </div>
 
       <div class="form-group">
         <label class="form-label">AVATAR PREVIEW</label>
         <div class="avatar-preview-container">
-          <img id="avatar-preview" src="https://api.dicebear.com/9.x/notionists/svg?seed=Alice-Explorer&backgroundType=gradientLinear,solid" class="avatar-preview">
+          <img id="avatar-preview" src="https://api.dicebear.com/9.x/notionists/svg?seed=default&backgroundType=gradientLinear,solid" class="avatar-preview">
         </div>
       </div>
 
@@ -117,7 +120,6 @@
     <h1 class="section-title"><span class="cursor">>_</span> CREDIT VERIFICATION</h1>
 
     <div class="grid-2">
-      <!-- Experian -->
       <div class="card">
         <div class="card-label">EXPERIAN CREDIT SCORE</div>
         <div class="credit-source">
@@ -133,7 +135,6 @@
         </div>
       </div>
 
-      <!-- JP Morgan -->
       <div class="card">
         <div class="card-label">JP MORGAN CREDIT CARD</div>
         <div class="credit-source">
@@ -150,7 +151,6 @@
       </div>
     </div>
 
-    <!-- Additional Sources -->
     <div class="card">
       <div class="card-label">OFF-CHAIN DATA SOURCES</div>
       <div class="data-source-row"><span class="ghost">BANK BALANCE</span><div class="mini-bar"><div class="mini-bar-fill" style="width:80%"></div></div><span>$52K</span></div>
@@ -170,6 +170,10 @@
     <div class="card card-form">
       <div class="card-label">REQUEST LOAN</div>
       <div class="form-group">
+        <label class="form-label">DIGITAL SELF</label>
+        <select id="loan-agent" class="form-input"></select>
+      </div>
+      <div class="form-group">
         <label class="form-label">AMOUNT (USDT)</label>
         <input type="number" id="loan-amount" class="form-input" placeholder="1000" value="1000">
       </div>
@@ -180,7 +184,6 @@
       <button id="btn-borrow" class="btn-primary">[ EXECUTE_LOAN ] →</button>
     </div>
 
-    <!-- Active Loans -->
     <div class="card">
       <div class="card-label">ACTIVE LOANS</div>
       <div id="loans-list" class="loans-list">
@@ -200,13 +203,12 @@
       <div class="card">
         <div class="card-label">REVENUE WATCHER</div>
         <div class="info-row"><span class="ghost">STATUS</span><span id="watcher-status" class="pulse">MONITORING</span></div>
-        <div class="info-row"><span class="ghost">AGENT BALANCE</span><span id="agent-balance">—</span></div>
-        <div class="info-row"><span class="ghost">ESCROW BALANCE</span><span id="escrow-balance">—</span></div>
+        <div class="info-row"><span class="ghost">ACTIVE SELVES</span><span id="watched-count">3</span></div>
         <div class="info-row"><span class="ghost">NEXT CHECK</span><span id="next-check" class="dim">—</span></div>
       </div>
 
       <div class="card">
-        <div class="card-label">COLLECTION AGENTS</div>
+        <div class="card-label">AGENT COORDINATION</div>
         <div class="agent-status-row"><span class="chip">CREDIT_AGENT</span><span class="pulse">IDLE</span></div>
         <div class="agent-status-row"><span class="chip">LENDING_AGENT</span><span class="pulse">IDLE</span></div>
         <div class="agent-status-row"><span class="chip">REVENUE_WATCHER</span><span class="pulse">ACTIVE</span></div>
@@ -215,7 +217,6 @@
       </div>
     </div>
 
-    <!-- Repayment Timeline -->
     <div class="card">
       <div class="card-label">REPAYMENT TIMELINE</div>
       <div id="repayment-timeline" class="timeline">
@@ -223,7 +224,6 @@
       </div>
     </div>
 
-    <!-- Escalation -->
     <div class="card" id="escalation-card" style="display: none">
       <div class="card-label" style="color: #ffb4ab">ESCALATION ALERT</div>
       <div id="escalation-msg" class="error-msg"></div>
