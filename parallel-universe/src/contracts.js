@@ -35,8 +35,11 @@ export function getContracts(signer) {
   const creditScore = new ethers.Contract(addresses.creditScore, loadABI("CreditScore"), signer);
   const guardrails = new ethers.Contract(addresses.guardrails, loadABI("Guardrails"), signer);
   const lendingPool = new ethers.Contract(addresses.lendingPool, loadABI("LendingPool"), signer);
+  const revenueEscrow = addresses.revenueEscrow
+    ? new ethers.Contract(addresses.revenueEscrow, loadABI("RevenueEscrow"), signer)
+    : null;
 
-  return { identity, creditScore, guardrails, lendingPool, addresses };
+  return { identity, creditScore, guardrails, lendingPool, revenueEscrow, addresses };
 }
 
 export { loadAddresses };

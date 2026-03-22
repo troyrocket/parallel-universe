@@ -55,7 +55,16 @@ async function main() {
   const poolAddr = await poolContract.getAddress();
   console.log("  LendingPool:", poolAddr);
 
-  // Fund the lending pool with 10 ETH (simulating USDT liquidity)
+  // 5. Deploy RevenueEscrow
+  console.log("Deploying RevenueEscrow...");
+  const escrow = loadContract("RevenueEscrow");
+  const EscrowFactory = new ethers.ContractFactory(escrow.abi, escrow.bytecode, deployer);
+  const escrowContract = await EscrowFactory.deploy(identityAddr, poolAddr);
+  await escrowContract.waitForDeployment();
+  const escrowAddr = await escrowContract.getAddress();
+  console.log("  RevenueEscrow:", escrowAddr);
+
+  // Fund the lending pool with 10 ETH
   console.log("\nFunding lending pool with 10 ETH...");
   const fundTx = await deployer.sendTransaction({
     to: poolAddr,
@@ -73,6 +82,7 @@ async function main() {
     creditScore: creditAddr,
     guardrails: guardrailsAddr,
     lendingPool: poolAddr,
+    revenueEscrow: escrowAddr,
     deployedAt: new Date().toISOString(),
   };
 

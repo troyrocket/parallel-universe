@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-tint": "#00e639",
+              "secondary-fixed-dim": "#69df5c",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed": "#002203",
+              "outline": "#84967e",
+              "surface": "#131313",
+              "primary": "#ebffe2",
+              "primary-fixed": "#72ff70",
+              "tertiary-fixed-dim": "#e7bf99",
+              "on-surface-variant": "#b9ccb2",
+              "surface-container": "#1f1f1f",
+              "secondary": "#69df5c",
+              "on-tertiary-container": "#7a5b3c",
+              "inverse-surface": "#e2e2e2",
+              "surface-bright": "#393939",
+              "surface-container-high": "#2a2a2a",
+              "on-secondary-container": "#003202",
+              "on-primary-fixed-variant": "#00530e",
+              "on-primary": "#003907",
+              "tertiary-fixed": "#ffdcbd",
+              "tertiary": "#fff8f4",
+              "background": "#131313",
+              "on-tertiary-fixed-variant": "#5d4124",
+              "surface-container-highest": "#353535",
+              "tertiary-container": "#ffd5ae",
+              "on-primary-container": "#007117",
+              "inverse-on-surface": "#303030",
+              "on-error": "#690005",
+              "on-tertiary": "#442b10",
+              "primary-fixed-dim": "#00e639",
+              "primary-container": "#00ff41",
+              "secondary-fixed": "#85fd75",
+              "error-container": "#93000a",
+              "surface-variant": "#353535",
+              "inverse-primary": "#006e16",
+              "surface-container-low": "#1b1b1b",
+              "on-secondary-fixed": "#002201",
+              "on-surface": "#e2e2e2",
+              "on-background": "#e2e2e2",
+              "surface-dim": "#131313",
+              "on-secondary": "#003a03",
+              "secondary-container": "#2ca62a",
+              "on-tertiary-fixed": "#2c1701",
+              "on-secondary-fixed-variant": "#005306",
+              "outline-variant": "#3b4b37"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Space Grotesk"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e2e2e2;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .matrix-bg {
+            background: linear-gradient(180deg, rgba(0, 255, 65, 0.05) 0%, rgba(19, 19, 19, 0) 100%);
+        }
+        .glitch-line {
+            box-shadow: 2px 0 0 #00FF41, -2px 0 0 #00FF41;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-4 bg-[#131313] shadow-[0_0_15px_rgba(0,255,65,0.1)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#00FF41]" data-icon="terminal">terminal</span>
+<h1 class="text-[#00FF41] font-bold tracking-tighter font-['Space_Grotesk'] uppercase tracking-[0.1em] text-sm">&gt;_ PARALLEL_UNIVERSE</h1>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-[#b9ccb2] hover:text-[#72ff70] cursor-pointer transition-all duration-75 active:skew-x-2" data-icon="search">search</span>
+<span class="material-symbols-outlined text-[#b9ccb2] hover:text-[#72ff70] cursor-pointer transition-all duration-75 active:skew-x-2" data-icon="more_vert">more_vert</span>
+</div>
+</header>
+<div class="bg-[#1b1b1b] h-[2px] w-full fixed top-[60px] z-50"></div>
+<main class="pt-24 px-6 space-y-12 max-w-md mx-auto">
+<!-- Introduction Header -->
+<section class="space-y-2">
+<div class="flex items-center gap-2">
+<div class="w-1 h-4 bg-primary-container"></div>
+<span class="text-[10px] uppercase tracking-[0.2em] font-label text-on-surface-variant">System.Initiate(Logo_Vault)</span>
+</div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-background leading-none">
+<span class="text-primary-container">&gt;_</span> VISUAL_IDENTITY_V1.0
+            </h2>
+</section>
+<!-- Concept 1: CLI Prompt -->
+<article class="space-y-4">
+<div class="flex justify-between items-end border-l border-outline-variant/30 pl-4">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-label">IDENTIFIER: CORE_PROMPT</span>
+<span class="text-[10px] text-primary-container/40">HEX_01</span>
+</div>
+<div class="bg-surface-container-low aspect-video flex items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 matrix-bg opacity-20"></div>
+<!-- Concept Canvas -->
+<div class="relative z-10 text-center">
+<div class="text-xl md:text-2xl font-bold text-primary-container tracking-widest flex items-center gap-2">
+<span class="animate-pulse">&gt;_</span>
+<span>PARALLEL_UNIVERSE</span>
+</div>
+</div>
+<!-- Terminal Annotation -->
+<div class="absolute bottom-2 left-2 flex gap-2">
+<span class="bg-surface-container-highest px-2 py-0.5 text-[8px] border-l border-primary-container text-primary-container">STABLE</span>
+<span class="bg-surface-container-highest px-2 py-0.5 text-[8px] border-l border-primary-container text-primary-container">NON-GRAPHICAL</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed opacity-80">
+                A minimalist representation of the origin point. Utilizing the standard I/O prompt as a symbol of creation and command entry.
+            </p>
+</article>
+<!-- Concept 2: Glitch Interwoven -->
+<article class="space-y-4">
+<div class="flex justify-between items-end border-l border-outline-variant/30 pl-4">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-label">IDENTIFIER: DUAL_SYNC</span>
+<span class="text-[10px] text-primary-container/40">HEX_02</span>
+</div>
+<div class="bg-surface-container-low aspect-video flex items-center justify-center relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 text-[8px] text-primary-container/20 font-mono">01010101010101</div>
+<!-- Concept Canvas: Abstract P/U -->
+<div class="relative w-24 h-24 flex items-center justify-center">
+<div class="absolute inset-0 border-[0.5px] border-primary-container/20"></div>
+<div class="relative flex">
+<div class="text-6xl font-light text-primary-container leading-none translate-x-1 opacity-50">P</div>
+<div class="text-6xl font-light text-primary-container leading-none -translate-x-3 mt-4">U</div>
+</div>
+<!-- Glitch Lines -->
+<div class="absolute w-full h-[1px] bg-primary-container top-1/2 -translate-y-4 opacity-40 shadow-[0_0_8px_#00FF41]"></div>
+<div class="absolute w-full h-[1px] bg-primary-container top-1/2 translate-y-2 opacity-60 shadow-[0_0_8px_#00FF41]"></div>
+</div>
+<!-- Terminal Annotation -->
+<div class="absolute bottom-2 left-2 flex gap-2">
+<span class="bg-surface-container-highest px-2 py-0.5 text-[8px] border-l border-primary-container text-primary-container">GLITCH_ACTIVE</span>
+<span class="bg-surface-container-highest px-2 py-0.5 text-[8px] border-l border-primary-container text-primary-container">ASYMMETRIC</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed opacity-80">
+                The intersection of realities. Thin-stroke typography meets digital interference, representing the thin veil between parallel states.
+            </p>
+</article>
+<!-- Concept 3: Binary Matrix -->
+<article class="space-y-4">
+<div class="flex justify-between items-end border-l border-outline-variant/30 pl-4">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-label">IDENTIFIER: NULL_VOID</span>
+<span class="text-[10px] text-primary-container/40">HEX_03</span>
+</div>
+<div class="bg-surface-container-low aspect-video grid grid-cols-2 relative overflow-hidden">
+<!-- Vertical Matrix Side -->
+<div class="flex flex-col items-center justify-center bg-surface-container-high/40 text-[8px] text-primary-container/60 gap-1 font-mono leading-none overflow-hidden select-none py-4">
+<span>P A R A L L E L</span>
+<span>U N I V E R S E</span>
+<span>P A R A L L E L</span>
+<span>U N I V E R S E</span>
+<span class="text-primary-container font-bold">P A R A L L E L</span>
+<span class="text-primary-container font-bold">U N I V E R S E</span>
+<span>P A R A L L E L</span>
+<span>U N I V E R S E</span>
+</div>
+<!-- Binary Square Side -->
+<div class="flex items-center justify-center p-6">
+<div class="w-20 h-20 border border-primary-container p-1 flex flex-wrap content-start gap-0.5 relative">
+<div class="absolute -top-1 -right-1 w-2 h-2 bg-primary-container"></div>
+<div class="text-[6px] text-primary-container font-mono tracking-tighter overflow-hidden h-full">
+                            0110100101111000101011010010110101101001011110001010110100101101011010010111100010101101001011010110100101111000101011010010110101101001011110001010110100101101011010010111100010101101001011010110100101111000101011010010110101101001011110001010110100101101
+                        </div>
+</div>
+</div>
+<!-- Terminal Annotation -->
+<div class="absolute bottom-2 left-2 flex gap-2">
+<span class="bg-surface-container-highest px-2 py-0.5 text-[8px] border-l border-primary-container text-primary-container">ENCRYPTED</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed opacity-80">
+                Data as the primary medium. A structural square built from raw binary code, paired with a vertical matrix typographical stack.
+            </p>
+</article>
+<!-- CTA Action -->
+<button class="w-full bg-primary-container py-4 text-on-primary font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 active:scale-95 duration-100">
+<span>[ SELECT_IDENTITY ]</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</main>
+<!-- Footer Component -->
+<footer class="w-full flex flex-col items-center justify-center gap-4 py-12 mb-16">
+<div class="flex gap-8 opacity-60 text-[9px] font-['Space_Grotesk'] tracking-widest text-[#b9ccb2]">
+<a class="hover:opacity-100 hover:text-[#00FF41] cursor-crosshair" href="#">RECOVER_SESSION</a>
+<a class="hover:opacity-100 hover:text-[#00FF41] cursor-crosshair" href="#">TERMINATE</a>
+</div>
+<div class="tonal-shift from-[#131313] to-[#0e0e0e] w-full flex justify-center py-4">
+<p class="text-[9px] tracking-widest text-[#b9ccb2] font-['Space_Grotesk']">(C) 2024 PARALLEL_UNIVERSE // NULL_VOID</p>
+</div>
+</footer>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-[#0e0e0e]">
+<div class="flex flex-col items-center justify-center text-[#b9ccb2] px-6 py-2 hover:bg-[#1f1f1f] hover:text-[#00FF41] active:scale-95 duration-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="lock_open">lock_open</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] uppercase mt-1">DECRYPT</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#00FF41] text-[#003907] px-6 py-2 active:scale-95 duration-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] uppercase mt-1">ARCHIVE</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#b9ccb2] px-6 py-2 hover:bg-[#1f1f1f] hover:text-[#00FF41] active:scale-95 duration-100 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-[0.2em] uppercase mt-1">SYSTEM</span>
+</div>
+</nav>
+</body></html>

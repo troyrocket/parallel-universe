@@ -12,7 +12,14 @@
     "deploy:sepolia": "node scripts/deploy.js",
     "demo": "npm run compile && npm run dev & sleep 3 && npm run deploy:local && npm run start"
   },
-  "keywords": ["credit", "agent", "defi", "wdk", "tether", "zk"],
+  "keywords": [
+    "credit",
+    "agent",
+    "defi",
+    "wdk",
+    "tether",
+    "zk"
+  ],
   "author": "Troy Yan",
   "license": "MIT",
   "dependencies": {
@@ -21,10 +28,13 @@
     "boxen": "^8.0.1",
     "chalk": "^5.6.2",
     "cli-table3": "^0.6.5",
+    "dotenv": "^17.3.1",
     "ethers": "^6.16.0",
+    "express": "^5.2.1",
     "figlet": "^1.11.0",
     "gradient-string": "^3.0.0",
     "hardhat": "^3.2.0",
-    "ora": "^9.3.0"
+    "ora": "^9.3.0",
+    "sharp": "^0.34.5"
   }
 }
