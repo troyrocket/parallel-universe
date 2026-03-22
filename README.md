@@ -1,5 +1,11 @@
 <img src="parallel-universe/assets/logo.svg" alt="Parallel Universe" width="100%">
 
+<p align="center">
+  <a href="https://troyrocket.github.io/parallel-universe/">Dashboard</a> &nbsp;&middot;&nbsp;
+  <a href="https://troyrocket.github.io/parallel-universe/avatar.html">Avatar Card</a> &nbsp;&middot;&nbsp;
+  <a href="https://github.com/troyrocket/parallel-universe">GitHub</a>
+</p>
+
 ---
 
 ## What is Parallel Universe?
