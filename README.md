@@ -183,19 +183,9 @@ The demo walks through the complete lifecycle of a Digital Self in 8 scenes:
 
 ## Roadmap
 
-- [x] Smart contracts — Identity, CreditScore, Guardrails, LendingPool, RevenueEscrow
-- [x] Jump Rate interest model with risk reserve
-- [x] 5 autonomous agents for full lending lifecycle
-- [x] Tether WDK wallet integration
-- [x] 8-scene CLI demo with real on-chain transactions
-- [x] [Web dashboard](https://troyrocket.github.io/parallel-universe/) for Digital Self management
-- [x] [DiceBear avatar generation](https://troyrocket.github.io/parallel-universe/avatar.html)
-- [x] Sepolia testnet deployment
-- [ ] Real ZK proofs via Circom circuits + Reclaim Protocol
-- [ ] USDT token transfers via WDK
-- [ ] Multi-agent support — one person managing multiple Digital Selves
-- [ ] Cross-chain credit portability
-- [ ] ML-based credit scoring model
+<p align="center">
+  <img src="parallel-universe/assets/roadmap.svg" alt="Roadmap" width="700">
+</p>
 
 ---
 

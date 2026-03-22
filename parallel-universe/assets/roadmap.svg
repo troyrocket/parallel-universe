@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340">
+  <rect width="720" height="340" fill="#131313"/>
+
+  <!-- Title -->
+  <text x="360" y="30" text-anchor="middle" font-family="monospace" font-size="14" font-weight="700" fill="#00FF41">ROADMAP</text>
+
+  <!-- Timeline line -->
+  <line x1="60" y1="70" x2="660" y2="70" stroke="#84967e" stroke-width="1"/>
+
+  <!-- Phase markers -->
+  <circle cx="120" cy="70" r="6" fill="#00FF41"/>
+  <circle cx="300" cy="70" r="6" fill="#00FF41"/>
+  <circle cx="480" cy="70" r="6" fill="#1f1f1f" stroke="#00FF41" stroke-width="2"/>
+  <circle cx="620" cy="70" r="6" fill="#1f1f1f" stroke="#84967e" stroke-width="1"/>
+
+  <!-- Phase 1: Now -->
+  <text x="120" y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF41">COMPLETE</text>
+  <rect x="40" y="90" width="160" height="210" fill="#1f1f1f"/>
+  <text x="120" y="115" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#00FF41">Phase 1</text>
+  <text x="120" y="132" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">FOUNDATION</text>
+
+  <text x="55" y="158" font-family="monospace" font-size="9" fill="#e2e2e2">On-chain credit</text>
+  <text x="55" y="174" font-family="monospace" font-size="9" fill="#e2e2e2">protocol</text>
+  <text x="55" y="198" font-family="monospace" font-size="9" fill="#e2e2e2">Agent-powered</text>
+  <text x="55" y="214" font-family="monospace" font-size="9" fill="#e2e2e2">lending lifecycle</text>
+  <text x="55" y="238" font-family="monospace" font-size="9" fill="#e2e2e2">Real-person backed</text>
+  <text x="55" y="254" font-family="monospace" font-size="9" fill="#e2e2e2">Digital Self identity</text>
+  <text x="55" y="278" font-family="monospace" font-size="9" fill="#e2e2e2">WDK + Sepolia</text>
+  <text x="55" y="294" font-family="monospace" font-size="9" fill="#e2e2e2">deployment</text>
+
+  <!-- Phase 2: Next -->
+  <text x="300" y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF41">IN PROGRESS</text>
+  <rect x="220" y="90" width="160" height="210" fill="#1f1f1f"/>
+  <text x="300" y="115" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#00FF41">Phase 2</text>
+  <text x="300" y="132" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">PRODUCTION</text>
+
+  <text x="235" y="158" font-family="monospace" font-size="9" fill="#e2e2e2">Real ZK proofs</text>
+  <text x="235" y="174" font-family="monospace" font-size="9" fill="#e2e2e2">(Circom + Reclaim)</text>
+  <text x="235" y="198" font-family="monospace" font-size="9" fill="#e2e2e2">USDT integration</text>
+  <text x="235" y="214" font-family="monospace" font-size="9" fill="#e2e2e2">via WDK transfers</text>
+  <text x="235" y="238" font-family="monospace" font-size="9" fill="#e2e2e2">Multi-agent fleet</text>
+  <text x="235" y="254" font-family="monospace" font-size="9" fill="#e2e2e2">management</text>
+  <text x="235" y="278" font-family="monospace" font-size="9" fill="#e2e2e2">ML credit scoring</text>
+  <text x="235" y="294" font-family="monospace" font-size="9" fill="#e2e2e2">model</text>
+
+  <!-- Phase 3: Future -->
+  <text x="480" y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">PLANNED</text>
+  <rect x="400" y="90" width="160" height="210" fill="#1b1b1b"/>
+  <text x="480" y="115" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#e2e2e2">Phase 3</text>
+  <text x="480" y="132" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">SCALE</text>
+
+  <text x="415" y="158" font-family="monospace" font-size="9" fill="#e2e2e2">Cross-chain credit</text>
+  <text x="415" y="174" font-family="monospace" font-size="9" fill="#e2e2e2">portability</text>
+  <text x="415" y="198" font-family="monospace" font-size="9" fill="#e2e2e2">Agent-to-agent</text>
+  <text x="415" y="214" font-family="monospace" font-size="9" fill="#e2e2e2">credit delegation</text>
+  <text x="415" y="238" font-family="monospace" font-size="9" fill="#e2e2e2">Institutional</text>
+  <text x="415" y="254" font-family="monospace" font-size="9" fill="#e2e2e2">liquidity pools</text>
+  <text x="415" y="278" font-family="monospace" font-size="9" fill="#e2e2e2">Credit-backed</text>
+  <text x="415" y="294" font-family="monospace" font-size="9" fill="#e2e2e2">DeFi composability</text>
+
+  <!-- Phase 4: Vision -->
+  <text x="620" y="55" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">VISION</text>
+  <rect x="565" y="90" width="115" height="210" fill="#1b1b1b"/>
+  <text x="622" y="115" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#e2e2e2">Phase 4</text>
+  <text x="622" y="132" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">NETWORK</text>
+
+  <text x="578" y="158" font-family="monospace" font-size="9" fill="#e2e2e2">Global agent</text>
+  <text x="578" y="174" font-family="monospace" font-size="9" fill="#e2e2e2">credit network</text>
+  <text x="578" y="198" font-family="monospace" font-size="9" fill="#e2e2e2">Decentralized</text>
+  <text x="578" y="214" font-family="monospace" font-size="9" fill="#e2e2e2">credit bureau</text>
+  <text x="578" y="238" font-family="monospace" font-size="9" fill="#e2e2e2">Agent financial</text>
+  <text x="578" y="254" font-family="monospace" font-size="9" fill="#e2e2e2">ecosystem</text>
+
+  <!-- Footer -->
+  <text x="360" y="330" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">&gt;_ PARALLEL_UNIVERSE</text>
+</svg>
