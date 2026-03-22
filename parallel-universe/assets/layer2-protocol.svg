@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350">
+  <rect width="720" height="350" fill="#131313"/>
+
+  <!-- Title -->
+  <text x="360" y="30" text-anchor="middle" font-family="monospace" font-size="10" fill="#84967e">LAYER 2</text>
+  <text x="360" y="50" text-anchor="middle" font-family="monospace" font-size="14" font-weight="700" fill="#00FF41">DIGITAL SELF ↔ PROTOCOL</text>
+
+  <!-- Digital Self on the left -->
+  <rect x="50" y="80" width="180" height="200" fill="#1f1f1f"/>
+  <text x="140" y="105" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#00FF41">Digital Self</text>
+  <text x="140" y="130" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">ERC-8004 Identity</text>
+  <text x="140" y="148" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">WDK Wallet</text>
+  <text x="140" y="166" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Credit Score</text>
+  <text x="140" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Guardrails</text>
+  <text x="140" y="210" text-anchor="middle" font-family="monospace" font-size="9" fill="#e2e2e2">Earns revenue</text>
+  <text x="140" y="228" text-anchor="middle" font-family="monospace" font-size="9" fill="#e2e2e2">from tasks</text>
+  <rect x="70" y="245" width="140" height="22" fill="#2a2a2a"/>
+  <rect x="70" y="245" width="2" height="22" fill="#00FF41"/>
+  <text x="82" y="260" font-family="monospace" font-size="9" fill="#00FF41">AUTONOMOUS</text>
+
+  <!-- Protocol on the right -->
+  <rect x="490" y="80" width="180" height="200" fill="#1b1b1b"/>
+  <text x="580" y="105" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#00FF41">Protocol</text>
+  <text x="580" y="130" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Liquidity Pool</text>
+  <text x="580" y="148" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Credit Engine</text>
+  <text x="580" y="166" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Revenue Escrow</text>
+  <text x="580" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Risk Reserve</text>
+  <text x="580" y="210" text-anchor="middle" font-family="monospace" font-size="9" fill="#e2e2e2">Manages lending</text>
+  <text x="580" y="228" text-anchor="middle" font-family="monospace" font-size="9" fill="#e2e2e2">lifecycle</text>
+  <rect x="510" y="245" width="140" height="22" fill="#2a2a2a"/>
+  <rect x="510" y="245" width="2" height="22" fill="#00FF41"/>
+  <text x="522" y="260" font-family="monospace" font-size="9" fill="#00FF41">ON-CHAIN</text>
+
+  <!-- Arrows between them -->
+  <!-- ZK Credit Data -->
+  <line x1="230" y1="120" x2="490" y2="120" stroke="#00FF41" stroke-width="1"/>
+  <polygon points="485,116 485,124 492,120" fill="#00FF41"/>
+  <text x="360" y="113" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF41">ZK credit data →</text>
+
+  <!-- Borrow -->
+  <line x1="490" y1="160" x2="230" y2="160" stroke="#00FF41" stroke-width="1"/>
+  <polygon points="235,156 235,164 228,160" fill="#00FF41"/>
+  <text x="360" y="153" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF41">← Loan disbursed</text>
+
+  <!-- Revenue -->
+  <line x1="230" y1="200" x2="490" y2="200" stroke="#00FF41" stroke-width="1"/>
+  <polygon points="485,196 485,204 492,200" fill="#00FF41"/>
+  <text x="360" y="193" text-anchor="middle" font-family="monospace" font-size="9" fill="#00FF41">Revenue to escrow →</text>
+
+  <!-- Auto-repay -->
+  <line x1="490" y1="240" x2="230" y2="240" stroke="#84967e" stroke-width="1"/>
+  <polygon points="235,236 235,244 228,240" fill="#84967e"/>
+  <text x="360" y="233" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">← Auto-repayment</text>
+
+  <!-- Bottom label -->
+  <text x="360" y="320" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Credit score grows with each successful repayment cycle</text>
+  <rect x="260" y="328" width="200" height="3" fill="#1f1f1f"/>
+  <rect x="260" y="328" width="140" height="3" fill="#00FF41"/>
+</svg>

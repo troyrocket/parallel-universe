@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400">
+  <rect width="720" height="400" fill="#131313"/>
+
+  <!-- Title -->
+  <text x="360" y="30" text-anchor="middle" font-family="monospace" font-size="10" fill="#84967e">LAYER 3</text>
+  <text x="360" y="50" text-anchor="middle" font-family="monospace" font-size="14" font-weight="700" fill="#00FF41">AUTONOMOUS BANKING SYSTEM</text>
+
+  <!-- Agent Coordination -->
+  <rect x="40" y="70" width="640" height="110" fill="#1f1f1f"/>
+  <text x="360" y="90" text-anchor="middle" font-family="monospace" font-size="10" fill="#84967e">AGENT COORDINATION</text>
+
+  <!-- 5 agents: 3 + 2 rows -->
+  <rect x="55" y="105" width="180" height="26" fill="#2a2a2a"/>
+  <rect x="55" y="105" width="2" height="26" fill="#00FF41"/>
+  <text x="67" y="122" font-family="monospace" font-size="10" fill="#00FF41">CreditAgent</text>
+  <text x="180" y="122" font-family="monospace" font-size="8" fill="#84967e">evaluate</text>
+
+  <rect x="270" y="105" width="180" height="26" fill="#2a2a2a"/>
+  <rect x="270" y="105" width="2" height="26" fill="#00FF41"/>
+  <text x="282" y="122" font-family="monospace" font-size="10" fill="#00FF41">LendingAgent</text>
+  <text x="405" y="122" font-family="monospace" font-size="8" fill="#84967e">execute</text>
+
+  <rect x="485" y="105" width="180" height="26" fill="#2a2a2a"/>
+  <rect x="485" y="105" width="2" height="26" fill="#00FF41"/>
+  <text x="497" y="122" font-family="monospace" font-size="10" fill="#00FF41">RevenueWatcher</text>
+  <text x="630" y="122" font-family="monospace" font-size="8" fill="#84967e">monitor</text>
+
+  <rect x="162" y="140" width="180" height="26" fill="#2a2a2a"/>
+  <rect x="162" y="140" width="2" height="26" fill="#00FF41"/>
+  <text x="174" y="157" font-family="monospace" font-size="10" fill="#00FF41">CollectionAgent</text>
+  <text x="305" y="157" font-family="monospace" font-size="8" fill="#84967e">collect</text>
+
+  <rect x="378" y="140" width="180" height="26" fill="#2a2a2a"/>
+  <rect x="378" y="140" width="2" height="26" fill="#00FF41"/>
+  <text x="390" y="157" font-family="monospace" font-size="10" fill="#00FF41">EscalationAgent</text>
+  <text x="525" y="157" font-family="monospace" font-size="8" fill="#84967e">escalate</text>
+
+  <!-- Arrow down -->
+  <text x="360" y="200" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">calls / enforces</text>
+  <line x1="360" y1="205" x2="360" y2="230" stroke="#84967e" stroke-width="1"/>
+  <polygon points="355,225 365,225 360,232" fill="#84967e"/>
+
+  <!-- Smart Contracts -->
+  <rect x="40" y="235" width="640" height="130" fill="#1b1b1b"/>
+  <text x="360" y="255" text-anchor="middle" font-family="monospace" font-size="10" fill="#84967e">SMART CONTRACTS (ON-CHAIN)</text>
+
+  <!-- 5 contracts -->
+  <rect x="52" y="270" width="110" height="44" fill="#2a2a2a"/>
+  <text x="107" y="288" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#e2e2e2">Identity</text>
+  <text x="107" y="304" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">ERC-8004</text>
+
+  <rect x="178" y="270" width="110" height="44" fill="#2a2a2a"/>
+  <text x="233" y="288" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#e2e2e2">CreditScore</text>
+  <text x="233" y="304" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">dual-layer</text>
+
+  <rect x="304" y="270" width="110" height="44" fill="#2a2a2a"/>
+  <text x="359" y="288" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#e2e2e2">Guardrails</text>
+  <text x="359" y="304" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">safety</text>
+
+  <rect x="430" y="270" width="110" height="44" fill="#2a2a2a"/>
+  <text x="485" y="288" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#e2e2e2">LendingPool</text>
+  <text x="485" y="304" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Jump Rate</text>
+
+  <rect x="556" y="270" width="110" height="44" fill="#2a2a2a"/>
+  <text x="611" y="288" text-anchor="middle" font-family="monospace" font-size="11" font-weight="700" fill="#e2e2e2">Revenue</text>
+  <text x="611" y="304" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">Escrow</text>
+
+  <!-- Cycle arrows at bottom -->
+  <text x="360" y="380" text-anchor="middle" font-family="monospace" font-size="9" fill="#84967e">evaluate → approve → disburse → monitor → collect → escalate → repeat</text>
+</svg>

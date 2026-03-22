@@ -47,17 +47,31 @@ The Digital Self can autonomously borrow from liquidity pools, earn revenue by c
 
 ## How It Works
 
-The protocol operates across three layers: a web dashboard for human oversight, an autonomous agent coordination layer that handles the lending lifecycle, and a set of smart contracts that enforce all rules on-chain.
+The protocol operates across three layers:
+
+### Layer 1: Human Oversight
+
+The real person manages multiple Digital Selves through a [web dashboard](https://troyrocket.github.io/parallel-universe/) — creating identities, monitoring credit scores, reviewing loans, setting guardrails, and intervening when needed.
 
 <p align="center">
-  <img src="parallel-universe/assets/architecture.svg" alt="Architecture" width="700">
+  <img src="parallel-universe/assets/layer1-dashboard.svg" alt="Layer 1: Human Oversight" width="700">
 </p>
 
-**Layer 1: [Web Dashboard](https://troyrocket.github.io/parallel-universe/)** — A browser-based management interface where the real person can create Digital Selves, view credit scores, manage loans, and monitor collection status. Built with the Terminal Echo design system.
+### Layer 2: Digital Self ↔ Protocol
 
-**Layer 2: Agent Coordination** — Five autonomous agents that coordinate the entire lending lifecycle without human intervention. They evaluate credit, execute loans, monitor revenue, handle overdue loans, and escalate to the real person when things go wrong.
+Each Digital Self interacts with the protocol autonomously: submitting ZK-verified credit data, requesting loans from the liquidity pool, routing earned revenue through escrow, and auto-repaying debt. Credit score grows with each successful cycle.
 
-**Layer 3: Smart Contracts** — Five Solidity contracts deployed on-chain that enforce all financial rules: identity binding, credit scoring, behavioral guardrails, lending with dynamic interest rates, and revenue escrow with automatic repayment.
+<p align="center">
+  <img src="parallel-universe/assets/layer2-protocol.svg" alt="Layer 2: Digital Self ↔ Protocol" width="700">
+</p>
+
+### Layer 3: Autonomous Banking System
+
+Under the hood, five autonomous agents coordinate the full lending lifecycle — evaluating credit, executing loans, monitoring revenue, collecting overdue debt, and escalating to the real person. All enforced by smart contracts on-chain.
+
+<p align="center">
+  <img src="parallel-universe/assets/layer3-banking.svg" alt="Layer 3: Autonomous Banking System" width="700">
+</p>
 
 ---
 
