@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>>_ PARALLEL_UNIVERSE</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="header-left">
+    <span class="logo-icon">[>_]</span>
+    <span class="logo-text">>_ PARALLEL_UNIVERSE</span>
+  </div>
+  <nav class="header-nav">
+    <a href="#" class="nav-link active" data-section="dashboard">DASHBOARD</a>
+    <a href="#" class="nav-link" data-section="create">CREATE</a>
+    <a href="#" class="nav-link" data-section="credit">CREDIT</a>
+    <a href="#" class="nav-link" data-section="loans">LOANS</a>
+    <a href="#" class="nav-link" data-section="collection">COLLECTION</a>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+
+  <!-- Section: Dashboard -->
+  <section id="dashboard" class="section active">
+    <div class="section-label">SYSTEM.STATUS(DASHBOARD)</div>
+    <h1 class="section-title"><span class="cursor">>_</span> DASHBOARD</h1>
+
+    <div class="grid-2">
+      <!-- Credit Score Card -->
+      <div class="card card-hero">
+        <div class="card-label">COMPOSITE CREDIT SCORE</div>
+        <div class="score-display" id="dash-score">—</div>
+        <div class="score-bar"><div class="score-bar-fill" id="dash-bar" style="width: 0%"></div></div>
+        <div class="score-meta">
+          <span><span class="ghost">ZK BASE</span> <span id="dash-zk">—</span></span>
+          <span><span class="ghost">ON-CHAIN</span> <span id="dash-onchain">—</span></span>
+        </div>
+      </div>
+
+      <!-- Identity Card -->
+      <div class="card">
+        <div class="card-label">DIGITAL SELF</div>
+        <div class="avatar-container">
+          <img id="dash-avatar" src="" alt="avatar" class="avatar-img">
+        </div>
+        <div class="info-row"><span class="ghost">NAME</span><span id="dash-name">—</span></div>
+        <div class="info-row"><span class="ghost">ADDRESS</span><span id="dash-address" class="dim">—</span></div>
+        <div class="info-row"><span class="ghost">STATUS</span><span id="dash-status" class="pulse">—</span></div>
+        <div class="chip-row">
+          <span class="chip">DIGITAL_SELF</span>
+          <span class="chip">ERC-8004</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid-4">
+      <div class="stat-card">
+        <div class="stat-label">CAPACITY</div>
+        <div class="stat-value pulse" id="dash-capacity">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">ACTIVE LOANS</div>
+        <div class="stat-value" id="dash-active-loans">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">TOTAL BORROWED</div>
+        <div class="stat-value" id="dash-total-borrowed">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">RISK LEVEL</div>
+        <div class="stat-value pulse" id="dash-risk">—</div>
+      </div>
+    </div>
+
+    <!-- Activity Log -->
+    <div class="card">
+      <div class="card-label">ACTIVITY LOG</div>
+      <div id="activity-log" class="activity-log"></div>
+    </div>
+  </section>
+
+  <!-- Section: Create Digital Self -->
+  <section id="create" class="section">
+    <div class="section-label">SYSTEM.INITIATE(DIGITAL_SELF)</div>
+    <h1 class="section-title"><span class="cursor">>_</span> CREATE DIGITAL SELF</h1>
+
+    <div class="card card-form">
+      <div class="form-group">
+        <label class="form-label">AGENT NAME</label>
+        <input type="text" id="agent-name" class="form-input" placeholder="Enter agent name_" value="Alice-Explorer">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">AVATAR PREVIEW</label>
+        <div class="avatar-preview-container">
+          <img id="avatar-preview" src="https://api.dicebear.com/9.x/notionists/svg?seed=Alice-Explorer&backgroundType=gradientLinear,solid" class="avatar-preview">
+        </div>
+      </div>
+
+      <button id="btn-create" class="btn-primary">[ CREATE_DIGITAL_SELF ] →</button>
+
+      <div id="create-log" class="log-output"></div>
+    </div>
+  </section>
+
+  <!-- Section: Credit Verification -->
+  <section id="credit" class="section">
+    <div class="section-label">SYSTEM.VERIFY(CREDIT_SOURCES)</div>
+    <h1 class="section-title"><span class="cursor">>_</span> CREDIT VERIFICATION</h1>
+
+    <div class="grid-2">
+      <!-- Experian -->
+      <div class="card">
+        <div class="card-label">EXPERIAN CREDIT SCORE</div>
+        <div class="credit-source">
+          <div class="credit-source-name">EXPERIAN</div>
+          <div class="credit-source-value pulse">680</div>
+          <div class="score-bar"><div class="score-bar-fill" style="width: 75%"></div></div>
+          <div class="info-row"><span class="ghost">RANGE</span><span>300 — 850</span></div>
+          <div class="info-row"><span class="ghost">HISTORY</span><span>7 YEARS</span></div>
+          <div class="chip-row">
+            <span class="chip">VERIFIED</span>
+            <span class="chip">ZK_PROOF</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- JP Morgan -->
+      <div class="card">
+        <div class="card-label">JP MORGAN CREDIT CARD</div>
+        <div class="credit-source">
+          <div class="credit-source-name">CHASE SAPPHIRE</div>
+          <div class="credit-source-value pulse">$15,000</div>
+          <div class="info-row"><span class="ghost">TYPE</span><span>CREDIT LIMIT</span></div>
+          <div class="info-row"><span class="ghost">UTILIZATION</span><span>23%</span></div>
+          <div class="info-row"><span class="ghost">PAYMENT</span><span>ON-TIME (36/36)</span></div>
+          <div class="chip-row">
+            <span class="chip">VERIFIED</span>
+            <span class="chip">ZK_PROOF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Sources -->
+    <div class="card">
+      <div class="card-label">OFF-CHAIN DATA SOURCES</div>
+      <div class="data-source-row"><span class="ghost">BANK BALANCE</span><div class="mini-bar"><div class="mini-bar-fill" style="width:80%"></div></div><span>$52K</span></div>
+      <div class="data-source-row"><span class="ghost">EMPLOYMENT</span><div class="mini-bar"><div class="mini-bar-fill" style="width:100%"></div></div><span>ACTIVE</span></div>
+      <div class="data-source-row"><span class="ghost">DEBT-TO-INCOME</span><div class="mini-bar"><div class="mini-bar-fill" style="width:40%"></div></div><span>23%</span></div>
+    </div>
+
+    <button id="btn-verify" class="btn-primary">[ VERIFY_AND_SUBMIT_ZK_PROOF ] →</button>
+    <div id="verify-log" class="log-output"></div>
+  </section>
+
+  <!-- Section: Loans -->
+  <section id="loans" class="section">
+    <div class="section-label">SYSTEM.EXECUTE(LENDING_PROTOCOL)</div>
+    <h1 class="section-title"><span class="cursor">>_</span> LOAN MANAGEMENT</h1>
+
+    <div class="card card-form">
+      <div class="card-label">REQUEST LOAN</div>
+      <div class="form-group">
+        <label class="form-label">AMOUNT (USDT)</label>
+        <input type="number" id="loan-amount" class="form-input" placeholder="1000" value="1000">
+      </div>
+      <div class="grid-2" style="gap: 1rem; margin-bottom: 2rem">
+        <div class="info-row"><span class="ghost">EST. RATE</span><span id="est-rate" class="pulse">—</span></div>
+        <div class="info-row"><span class="ghost">CAPACITY</span><span id="loan-capacity" class="pulse">—</span></div>
+      </div>
+      <button id="btn-borrow" class="btn-primary">[ EXECUTE_LOAN ] →</button>
+    </div>
+
+    <!-- Active Loans -->
+    <div class="card">
+      <div class="card-label">ACTIVE LOANS</div>
+      <div id="loans-list" class="loans-list">
+        <div class="ghost" style="padding: 2rem; text-align: center">NO ACTIVE LOANS</div>
+      </div>
+    </div>
+
+    <div id="loan-log" class="log-output"></div>
+  </section>
+
+  <!-- Section: Collection -->
+  <section id="collection" class="section">
+    <div class="section-label">SYSTEM.MONITOR(REVENUE_COLLECTION)</div>
+    <h1 class="section-title"><span class="cursor">>_</span> COLLECTION STATUS</h1>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">REVENUE WATCHER</div>
+        <div class="info-row"><span class="ghost">STATUS</span><span id="watcher-status" class="pulse">MONITORING</span></div>
+        <div class="info-row"><span class="ghost">AGENT BALANCE</span><span id="agent-balance">—</span></div>
+        <div class="info-row"><span class="ghost">ESCROW BALANCE</span><span id="escrow-balance">—</span></div>
+        <div class="info-row"><span class="ghost">NEXT CHECK</span><span id="next-check" class="dim">—</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">COLLECTION AGENTS</div>
+        <div class="agent-status-row"><span class="chip">CREDIT_AGENT</span><span class="pulse">IDLE</span></div>
+        <div class="agent-status-row"><span class="chip">LENDING_AGENT</span><span class="pulse">IDLE</span></div>
+        <div class="agent-status-row"><span class="chip">REVENUE_WATCHER</span><span class="pulse">ACTIVE</span></div>
+        <div class="agent-status-row"><span class="chip">COLLECTION_AGENT</span><span class="dim">STANDBY</span></div>
+        <div class="agent-status-row"><span class="chip">ESCALATION_AGENT</span><span class="dim">STANDBY</span></div>
+      </div>
+    </div>
+
+    <!-- Repayment Timeline -->
+    <div class="card">
+      <div class="card-label">REPAYMENT TIMELINE</div>
+      <div id="repayment-timeline" class="timeline">
+        <div class="ghost" style="padding: 2rem; text-align: center">NO REPAYMENT EVENTS</div>
+      </div>
+    </div>
+
+    <!-- Escalation -->
+    <div class="card" id="escalation-card" style="display: none">
+      <div class="card-label" style="color: #ffb4ab">ESCALATION ALERT</div>
+      <div id="escalation-msg" class="error-msg"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <span class="ghost">RECOVER_SESSION</span>
+  <span class="ghost">TERMINATE</span>
+  <div class="footer-copy">(C) 2026 PARALLEL_UNIVERSE // NULL_VOID</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

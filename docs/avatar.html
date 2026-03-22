@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>>_ Digital Self — Parallel Universe</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #131313;
+    color: #e2e2e2;
+    font-family: 'Space Grotesk', 'SF Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .card {
+    background: #1b1b1b;
+    padding: 48px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  .avatar {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 32px;
+    border: 2px solid #00FF41;
+  }
+  .avatar img { width: 100%; height: 100%; }
+  .name {
+    color: #00FF41;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .label { color: #84967e; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; }
+  .value { color: #e2e2e2; font-size: 14px; margin-bottom: 16px; }
+  .value.green { color: #00FF41; }
+  .tag {
+    display: inline-block;
+    border-left: 2px solid #00FF41;
+    background: #353535;
+    color: #00FF41;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    margin: 4px;
+  }
+  .score-bar {
+    width: 100%;
+    height: 4px;
+    background: #353535;
+    margin: 16px 0;
+  }
+  .score-bar-fill {
+    height: 100%;
+    background: #00FF41;
+    width: 75%;
+  }
+  .footer { color: #84967e; font-size: 10px; margin-top: 32px; letter-spacing: 2px; }
+  .input-row {
+    margin-bottom: 24px;
+  }
+  .input-row input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #84967e;
+    color: #e2e2e2;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 16px;
+    padding: 8px 0;
+    width: 100%;
+    text-align: center;
+    outline: none;
+  }
+  .input-row input:focus { border-bottom-color: #00FF41; }
+  .input-label { color: #84967e; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+</head><body>
+<div class="card">
+  <div class="input-row">
+    <div class="input-label">ENTER AGENT NAME</div>
+    <input type="text" id="name-input" value="Alice-Explorer" placeholder="Agent name_">
+  </div>
+  <div class="avatar"><img id="avatar-img" src="https://api.dicebear.com/9.x/notionists/svg?seed=Alice-Explorer&backgroundType=gradientLinear,solid" /></div>
+  <div class="name" id="display-name">Alice-Explorer</div>
+  <div class="label">ADDRESS</div>
+  <div class="value">0xA3c8...7F2d</div>
+  <div class="label">STATUS</div>
+  <div class="value green">ACTIVE</div>
+  <div class="label">CREDIT SCORE</div>
+  <div class="value green">680 / 900</div>
+  <div class="score-bar"><div class="score-bar-fill"></div></div>
+  <div style="margin-top: 16px">
+    <span class="tag">DIGITAL_SELF</span>
+    <span class="tag">ERC-8004</span>
+    <span class="tag">ZK_VERIFIED</span>
+  </div>
+  <div class="footer">>_ PARALLEL_UNIVERSE</div>
+</div>
+<script>
+const input = document.getElementById('name-input');
+const img = document.getElementById('avatar-img');
+const displayName = document.getElementById('display-name');
+input.addEventListener('input', () => {
+  const name = input.value || 'default';
+  img.src = 'https://api.dicebear.com/9.x/notionists/svg?seed=' + encodeURIComponent(name) + '&backgroundType=gradientLinear,solid';
+  displayName.textContent = name;
+});
+</script>
+</body></html>
