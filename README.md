@@ -41,24 +41,9 @@ The Digital Self can autonomously borrow from liquidity pools, earn revenue by c
 
 The protocol operates across three layers: a web dashboard for human oversight, an autonomous agent coordination layer that handles the lending lifecycle, and a set of smart contracts that enforce all rules on-chain.
 
-```
-                    ┌────────────────────┐
-                    │    Web Dashboard    │
-                    │  (human oversight)  │
-                    └─────────┬──────────┘
-                              │
-           ┌──────────────────┼──────────────────┐
-           │                  │                  │
-      CreditAgent       LendingAgent      RevenueWatcher
-     CollectionAgent    EscalationAgent
-           │                  │                  │
-           └──────────────────┼──────────────────┘
-                              │
-      ┌──────────┬────────────┼────────────┬────────────┐
-      │          │            │            │            │
-  Identity  CreditScore  Guardrails   LendingPool   Revenue
-  (ERC-8004) (dual-layer)  (safety)   (Jump Rate)    Escrow
-```
+<p align="center">
+  <img src="parallel-universe/assets/architecture.svg" alt="Architecture" width="700">
+</p>
 
 **Layer 1: Web Dashboard** — A browser-based management interface where the real person can create Digital Selves, view credit scores, manage loans, and monitor collection status. Built with the Terminal Echo design system.
 
