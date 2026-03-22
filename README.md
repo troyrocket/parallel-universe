@@ -75,32 +75,6 @@ Under the hood, five autonomous agents coordinate the full lending lifecycle —
 
 ---
 
-## Smart Contracts
-
-| Contract | Description |
-|:---------|:------------|
-| **Identity.sol** | ERC-8004 soulbound identity. Binds Digital Self to real person, stores ZK proof hash. Owner can deactivate or freeze at any time. |
-| **CreditScore.sol** | Dual-layer scoring engine. Composite of ZK off-chain base + on-chain behavior. Weight shifts from 100% off-chain (cold-start) toward on-chain as history builds. Min 20% off-chain anchor. |
-| **Guardrails.sol** | Behavioral safety. Max borrow limits, per-tx caps, daily spending limits. Enforced on every borrow. Emergency freeze. Auto-reset daily tracking. |
-| **LendingPool.sol** | Jump Rate interest model. Below 80% utilization: gradual rates. Above 80%: steep spike. Effective rate = max(pool rate, credit floor). 10% interest → risk reserve. |
-| **RevenueEscrow.sol** | Revenue custody. Configurable auto-split (e.g. 50%) between repayment and agent funds. Force-reclaim on default. |
-
----
-
-## Autonomous Agents
-
-Five agents coordinate the full lending lifecycle without human intervention:
-
-| Agent | Role |
-|:------|:-----|
-| **CreditAgent** | Evaluates creditworthiness. Calculates risk band (EXCELLENT → HIGH), checks defaults, recommends max loan. |
-| **LendingAgent** | Processes applications. Runs guardrail checks, calculates Jump Rate, executes loan from pool. |
-| **RevenueWatcher** | Monitors agent wallet (15s polling). Detects income, triggers auto-repayment when threshold met. |
-| **CollectionAgent** | Handles overdue loans. Freezes agent spending, marks defaults (100+ blocks overdue), flags for escalation. |
-| **EscalationAgent** | Last resort. Notifies real person, force-reclaims escrow, deactivates Digital Self. Owner must resolve debt to reactivate. |
-
----
-
 ## Tech Stack
 
 | Layer | Technology |
@@ -112,6 +86,28 @@ Five agents coordinate the full lending lifecycle without human intervention:
 | Avatar | DiceBear API (notionists style) |
 | ZK Verification | Simulated (production: Reclaim Protocol / tlsnotary) |
 | Chain | EVM-compatible (Sepolia testnet / localhost) |
+
+### Smart Contracts
+
+| Contract | Description |
+|:---------|:------------|
+| **Identity.sol** | ERC-8004 soulbound identity. Binds Digital Self to real person, stores ZK proof hash. Owner can deactivate or freeze at any time. |
+| **CreditScore.sol** | Dual-layer scoring engine. Composite of ZK off-chain base + on-chain behavior. Weight shifts from 100% off-chain (cold-start) toward on-chain as history builds. Min 20% off-chain anchor. |
+| **Guardrails.sol** | Behavioral safety. Max borrow limits, per-tx caps, daily spending limits. Enforced on every borrow. Emergency freeze. Auto-reset daily tracking. |
+| **LendingPool.sol** | Jump Rate interest model. Below 80% utilization: gradual rates. Above 80%: steep spike. Effective rate = max(pool rate, credit floor). 10% interest → risk reserve. |
+| **RevenueEscrow.sol** | Revenue custody. Configurable auto-split (e.g. 50%) between repayment and agent funds. Force-reclaim on default. |
+
+### Autonomous Agents
+
+Five agents coordinate the full lending lifecycle without human intervention:
+
+| Agent | Role |
+|:------|:-----|
+| **CreditAgent** | Evaluates creditworthiness. Calculates risk band (EXCELLENT → HIGH), checks defaults, recommends max loan. |
+| **LendingAgent** | Processes applications. Runs guardrail checks, calculates Jump Rate, executes loan from pool. |
+| **RevenueWatcher** | Monitors agent wallet (15s polling). Detects income, triggers auto-repayment when threshold met. |
+| **CollectionAgent** | Handles overdue loans. Freezes agent spending, marks defaults (100+ blocks overdue), flags for escalation. |
+| **EscalationAgent** | Last resort. Notifies real person, force-reclaims escrow, deactivates Digital Self. Owner must resolve debt to reactivate. |
 
 ---
 
