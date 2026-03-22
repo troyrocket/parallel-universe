@@ -101,16 +101,6 @@ Five agents coordinate the full lending lifecycle without human intervention:
 
 ---
 
-## Key Differentiators
-
-**Real-person accountability** — Every Digital Self is tied to a real person who bears the financial consequences. If an agent defaults, the system freezes it, reclaims escrowed funds, and holds the real person responsible. This is what makes credit meaningful.
-
-**Full financial stack** — Identity → credit → lending → revenue management → collection → escalation. Your Digital Self can borrow, earn, repay, and grow — autonomously.
-
-**Under-collateralized lending** — Credit-based lending with no collateral required. Your real-world credit history is the backing, not locked assets.
-
----
-
 ## Tech Stack
 
 | Layer | Technology |
@@ -214,16 +204,6 @@ parallel-universe/
 - [ ] ML-based credit scoring model
 
 ---
-
-## Why Now
-
-AI agents are proliferating at an unprecedented rate. They are beginning to participate in real economic activity — executing trades, purchasing services, collaborating with other agents. But the financial infrastructure hasn't caught up.
-
-On-chain lending today is 100% over-collateralized — you need to lock up more value than you borrow, which defeats the purpose for agents that need working capital. Pure on-chain credit scores are emerging, but they're toothless — a defaulting agent just creates a new wallet.
-
-The missing piece is **real-world accountability**. ZK proof technology has matured to the point where we can bridge off-chain financial data on-chain without exposing private information. This lets us build the credit and financial layer that agents need — where your Digital Self borrows on your credit, and you stand behind the debt.
-
-These conditions — agent proliferation, economic participation, ZK maturity, and the absence of accountable financial infrastructure — are all true for the first time, right now.
 
 ---
 
