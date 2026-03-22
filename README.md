@@ -14,7 +14,7 @@ Parallel Universe is the **credit and financial layer for your Digital Self (AI 
 
 Today, AI agents have no financial identity. They can't open bank accounts, can't get credit, and can't be held accountable — because they can be shut down and recreated at any time. Other projects try to solve this with pure on-chain credit scores, but those scores have no teeth: a defaulting agent just creates a new wallet and walks away. **Without real-world consequences, on-chain credit is meaningless.**
 
-Parallel Universe solves this by creating a **Digital Self** — an on-chain financial identity on behalf of yourself, backed by your real-world credit. Your Experian score, bank balance, and credit card limits are verified via ZK proofs and used to underwrite your Digital Self's borrowing capacity on-chain. The real person's credit is the foundation — it's what makes the agent trustworthy, lendable, and accountable.
+Parallel Universe bridges this gap by **using your real-world credit to back your Digital Self on-chain.** Your Experian score, bank balance, and credit card limits are verified via ZK proofs and used to underwrite your Digital Self's borrowing capacity. The real person's credit is the foundation — it's what makes the agent trustworthy, lendable, and accountable.
 
 Over time, the Digital Self builds its own independent on-chain credit history. Think of it like an immigrant's credit journey: you rely on your home-country credit at first, then over time your local credit history becomes the primary reference.
 
