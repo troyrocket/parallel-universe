@@ -89,13 +89,15 @@ Under the hood, five autonomous agents coordinate the full lending lifecycle —
 
 ### Smart Contracts
 
-| Contract | Description |
-|:---------|:------------|
-| **Identity.sol** | ERC-8004 soulbound identity. Binds Digital Self to real person, stores ZK proof hash. Owner can deactivate or freeze at any time. |
-| **CreditScore.sol** | Dual-layer scoring engine. Composite of ZK off-chain base + on-chain behavior. Weight shifts from 100% off-chain (cold-start) toward on-chain as history builds. Min 20% off-chain anchor. |
-| **Guardrails.sol** | Behavioral safety. Max borrow limits, per-tx caps, daily spending limits. Enforced on every borrow. Emergency freeze. Auto-reset daily tracking. |
-| **LendingPool.sol** | Jump Rate interest model. Below 80% utilization: gradual rates. Above 80%: steep spike. Effective rate = max(pool rate, credit floor). 10% interest → risk reserve. |
-| **RevenueEscrow.sol** | Revenue custody. Configurable auto-split (e.g. 50%) between repayment and agent funds. Force-reclaim on default. |
+Deployed on **Ethereum Sepolia Testnet**:
+
+| Contract | Address | Description |
+|:---------|:--------|:------------|
+| **Identity.sol** | [`0x51a4CC2C...ef4426`](https://sepolia.etherscan.io/address/0x51a4CC2C2Df225Bad6b7ac78F9987bC1C4ef4426) | ERC-8004 soulbound identity. Binds Digital Self to real person, stores ZK proof hash. Owner can deactivate or freeze at any time. |
+| **CreditScore.sol** | [`0x43254f5f...F8c8`](https://sepolia.etherscan.io/address/0x43254f5f79e1A207D69BA84D7dF75c047BB7F8c8) | Dual-layer scoring engine. Composite of ZK off-chain base + on-chain behavior. Weight shifts from 100% off-chain (cold-start) toward on-chain as history builds. Min 20% off-chain anchor. |
+| **Guardrails.sol** | [`0xE2817A3C...F5aF`](https://sepolia.etherscan.io/address/0xE2817A3Cc3687fdAcF943b67116Bac32133bF5aF) | Behavioral safety. Max borrow limits, per-tx caps, daily spending limits. Enforced on every borrow. Emergency freeze. Auto-reset daily tracking. |
+| **LendingPool.sol** | [`0x9C2282bB...02F3`](https://sepolia.etherscan.io/address/0x9C2282bB2Bf70fdC7Bd58016d4290798363602F3) | Jump Rate interest model. Below 80% utilization: gradual rates. Above 80%: steep spike. Effective rate = max(pool rate, credit floor). 10% interest → risk reserve. |
+| **RevenueEscrow.sol** | *pending* | Revenue custody. Configurable auto-split (e.g. 50%) between repayment and agent funds. Force-reclaim on default. |
 
 ### Autonomous Agents
 
