@@ -109,6 +109,36 @@ Five agents coordinate the full lending lifecycle without human intervention:
 | **CollectionAgent** | Handles overdue loans. Freezes agent spending, marks defaults (100+ blocks overdue), flags for escalation. |
 | **EscalationAgent** | Last resort. Notifies real person, force-reclaims escrow, deactivates Digital Self. Owner must resolve debt to reactivate. |
 
+### Project Structure
+
+```
+parallel-universe/
+├── contracts/
+│   ├── Identity.sol          ERC-8004 soulbound identity
+│   ├── CreditScore.sol       Dual-layer credit scoring
+│   ├── Guardrails.sol        Behavioral safety rules
+│   ├── LendingPool.sol       Jump Rate lending pool
+│   └── RevenueEscrow.sol     Revenue custody + auto-repay
+├── src/
+│   ├── index.js              Main demo (8 scenes)
+│   ├── server.js             Express dashboard server
+│   ├── ui.js                 CLI renderer
+│   ├── contracts.js          Contract loader
+│   └── agents/
+│       ├── CreditAgent.js    Credit evaluation
+│       ├── LendingAgent.js   Loan execution
+│       ├── RevenueWatcher.js Income monitoring
+│       ├── CollectionAgent.js Overdue handling
+│       └── EscalationAgent.js Owner escalation
+├── web/
+│   ├── index.html            Dashboard UI
+│   ├── style.css             Terminal Echo design system
+│   └── app.js                Frontend logic
+└── scripts/
+    ├── deploy.js             Sepolia deployment
+    └── deploy-local.js       Local deployment
+```
+
 ---
 
 ## Quick Start
@@ -148,38 +178,6 @@ The demo walks through the complete lifecycle of a Digital Self in 8 scenes:
 | 06 | **Revenue & Repayment** | Agent earns 1.5 ETH from task, RevenueWatcher detects and auto-repays loan |
 | 07 | **Guardrail & Collection** | Agent attempts to over-borrow, denied by guardrails, escalation scenario shown |
 | 08 | **[Dashboard](https://troyrocket.github.io/parallel-universe/)** | Final overview of credit growth (680 → 702), weight shift, activity log |
-
----
-
-## Project Structure
-
-```
-parallel-universe/
-├── contracts/
-│   ├── Identity.sol          ERC-8004 soulbound identity
-│   ├── CreditScore.sol       Dual-layer credit scoring
-│   ├── Guardrails.sol        Behavioral safety rules
-│   ├── LendingPool.sol       Jump Rate lending pool
-│   └── RevenueEscrow.sol     Revenue custody + auto-repay
-├── src/
-│   ├── index.js              Main demo (8 scenes)
-│   ├── server.js             Express dashboard server
-│   ├── ui.js                 CLI renderer
-│   ├── contracts.js          Contract loader
-│   └── agents/
-│       ├── CreditAgent.js    Credit evaluation
-│       ├── LendingAgent.js   Loan execution
-│       ├── RevenueWatcher.js Income monitoring
-│       ├── CollectionAgent.js Overdue handling
-│       └── EscalationAgent.js Owner escalation
-├── web/
-│   ├── index.html            Dashboard UI
-│   ├── style.css             Terminal Echo design system
-│   └── app.js                Frontend logic
-└── scripts/
-    ├── deploy.js             Sepolia deployment
-    └── deploy-local.js       Local deployment
-```
 
 ---
 
