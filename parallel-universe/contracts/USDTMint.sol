@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-/// @title MockUSDT — Test Tether USD token (6 decimals)
-contract MockUSDT {
+/// @title USDTMint — Tether USD token for testnet (6 decimals)
+contract USDTMint {
     string public constant name = "Tether USD";
     string public constant symbol = "USDT";
     uint8 public constant decimals = 6;

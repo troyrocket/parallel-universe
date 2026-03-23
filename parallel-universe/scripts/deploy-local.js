@@ -18,14 +18,14 @@ async function main() {
     return { abi: artifact.abi, bytecode: artifact.bytecode };
   }
 
-  // 1. Deploy MockUSDT
-  console.log("\nDeploying MockUSDT...");
-  const usdt = loadContract("MockUSDT");
+  // 1. Deploy USDTMint
+  console.log("\nDeploying USDTMint...");
+  const usdt = loadContract("USDTMint");
   const UsdtFactory = new ethers.ContractFactory(usdt.abi, usdt.bytecode, deployer);
   const usdtContract = await UsdtFactory.deploy();
   await usdtContract.waitForDeployment();
   const usdtAddr = await usdtContract.getAddress();
-  console.log("  MockUSDT:", usdtAddr);
+  console.log("  USDTMint:", usdtAddr);
 
   // 2. Deploy Identity
   console.log("Deploying Identity...");

@@ -39,7 +39,7 @@ export function getContracts(signer) {
     ? new ethers.Contract(addresses.revenueEscrow, loadABI("RevenueEscrow"), signer)
     : null;
   const usdt = addresses.usdt
-    ? new ethers.Contract(addresses.usdt, loadABI("MockUSDT"), signer)
+    ? new ethers.Contract(addresses.usdt, loadABI("USDTMint"), signer)
     : null;
 
   return { identity, creditScore, guardrails, lendingPool, revenueEscrow, usdt, addresses };

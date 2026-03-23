@@ -3,13 +3,13 @@ pragma solidity ^0.8.24;
 
 import "./Identity.sol";
 import "./LendingPool.sol";
-import "./MockUSDT.sol";
+import "./USDTMint.sol";
 
 /// @title RevenueEscrow — USDT revenue custody and auto-repayment for Digital Selves
 contract RevenueEscrow {
     Identity public immutable identity;
     LendingPool public immutable lendingPool;
-    MockUSDT public immutable usdt;
+    USDTMint public immutable usdt;
 
     struct EscrowAccount {
         uint256 balance;
@@ -31,7 +31,7 @@ contract RevenueEscrow {
     constructor(address _identity, address _lendingPool, address _usdt) {
         identity = Identity(_identity);
         lendingPool = LendingPool(_lendingPool);
-        usdt = MockUSDT(_usdt);
+        usdt = USDTMint(_usdt);
     }
 
     function activate(address agent, uint256 repaymentRatio) external {

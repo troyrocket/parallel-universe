@@ -4,7 +4,7 @@ pragma solidity ^0.8.24;
 import "./CreditScore.sol";
 import "./Guardrails.sol";
 import "./Identity.sol";
-import "./MockUSDT.sol";
+import "./USDTMint.sol";
 
 /// @title LendingPool — Credit-based USDT lending with Jump Rate interest model
 /// @notice Allows Digital Selves to borrow USDT based on credit score, no collateral required
@@ -12,7 +12,7 @@ contract LendingPool {
     CreditScore public immutable creditScore;
     Guardrails public immutable guardrails;
     Identity public immutable identity;
-    MockUSDT public immutable usdt;
+    USDTMint public immutable usdt;
 
     struct Loan {
         uint256 amount;        // USDT amount (6 decimals)
@@ -45,7 +45,7 @@ contract LendingPool {
         creditScore = CreditScore(_creditScore);
         guardrails = Guardrails(_guardrails);
         identity = Identity(_identity);
-        usdt = MockUSDT(_usdt);
+        usdt = USDTMint(_usdt);
     }
 
     /// @notice Fund the lending pool with USDT
