@@ -120,15 +120,15 @@ contract CreditScore {
         return composite > MAX_SCORE ? MAX_SCORE : composite;
     }
 
-    /// @notice Get borrowing capacity in wei based on credit score
+    /// @notice Get borrowing capacity in USDT (6 decimals) based on credit score
     function getBorrowingCapacity(address agent) external view returns (uint256) {
         uint256 score = getCompositeScore(agent);
         if (score == 0) return 0;
 
-        // Linear mapping: score 300 → 1 ETH, score 900 → 10 ETH
+        // Linear mapping: score 300 → 500 USDT, score 900 → 10,000 USDT
         if (score < 300) return 0;
 
-        uint256 capacity = ((score - 300) * 9 ether) / 600 + 1 ether;
+        uint256 capacity = ((score - 300) * 9500 * 1e6) / 600 + 500 * 1e6;
         return capacity;
     }
 

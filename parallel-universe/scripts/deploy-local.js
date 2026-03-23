@@ -6,7 +6,6 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function main() {
-  // Connect to local hardhat node
   const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545");
   const deployer = await provider.getSigner(0);
   console.log("Deploying from:", deployer.address);
@@ -19,8 +18,17 @@ async function main() {
     return { abi: artifact.abi, bytecode: artifact.bytecode };
   }
 
-  // 1. Deploy Identity
-  console.log("\nDeploying Identity...");
+  // 1. Deploy MockUSDT
+  console.log("\nDeploying MockUSDT...");
+  const usdt = loadContract("MockUSDT");
+  const UsdtFactory = new ethers.ContractFactory(usdt.abi, usdt.bytecode, deployer);
+  const usdtContract = await UsdtFactory.deploy();
+  await usdtContract.waitForDeployment();
+  const usdtAddr = await usdtContract.getAddress();
+  console.log("  MockUSDT:", usdtAddr);
+
+  // 2. Deploy Identity
+  console.log("Deploying Identity...");
   const identity = loadContract("Identity");
   const IdentityFactory = new ethers.ContractFactory(identity.abi, identity.bytecode, deployer);
   const identityContract = await IdentityFactory.deploy();
@@ -28,7 +36,7 @@ async function main() {
   const identityAddr = await identityContract.getAddress();
   console.log("  Identity:", identityAddr);
 
-  // 2. Deploy CreditScore
+  // 3. Deploy CreditScore
   console.log("Deploying CreditScore...");
   const credit = loadContract("CreditScore");
   const CreditFactory = new ethers.ContractFactory(credit.abi, credit.bytecode, deployer);
@@ -37,7 +45,7 @@ async function main() {
   const creditAddr = await creditContract.getAddress();
   console.log("  CreditScore:", creditAddr);
 
-  // 3. Deploy Guardrails
+  // 4. Deploy Guardrails
   console.log("Deploying Guardrails...");
   const guardrails = loadContract("Guardrails");
   const GuardrailsFactory = new ethers.ContractFactory(guardrails.abi, guardrails.bytecode, deployer);
@@ -46,38 +54,38 @@ async function main() {
   const guardrailsAddr = await guardrailsContract.getAddress();
   console.log("  Guardrails:", guardrailsAddr);
 
-  // 4. Deploy LendingPool
+  // 5. Deploy LendingPool (now takes USDT address)
   console.log("Deploying LendingPool...");
   const pool = loadContract("LendingPool");
   const PoolFactory = new ethers.ContractFactory(pool.abi, pool.bytecode, deployer);
-  const poolContract = await PoolFactory.deploy(creditAddr, guardrailsAddr, identityAddr);
+  const poolContract = await PoolFactory.deploy(creditAddr, guardrailsAddr, identityAddr, usdtAddr);
   await poolContract.waitForDeployment();
   const poolAddr = await poolContract.getAddress();
   console.log("  LendingPool:", poolAddr);
 
-  // 5. Deploy RevenueEscrow
+  // 6. Deploy RevenueEscrow
   console.log("Deploying RevenueEscrow...");
   const escrow = loadContract("RevenueEscrow");
   const EscrowFactory = new ethers.ContractFactory(escrow.abi, escrow.bytecode, deployer);
-  const escrowContract = await EscrowFactory.deploy(identityAddr, poolAddr);
+  const escrowContract = await EscrowFactory.deploy(identityAddr, poolAddr, usdtAddr);
   await escrowContract.waitForDeployment();
   const escrowAddr = await escrowContract.getAddress();
   console.log("  RevenueEscrow:", escrowAddr);
 
-  // Fund the lending pool with 10 ETH
-  console.log("\nFunding lending pool with 10 ETH...");
-  const fundTx = await deployer.sendTransaction({
-    to: poolAddr,
-    value: ethers.parseEther("10"),
-    data: new ethers.Interface(pool.abi).encodeFunctionData("fundPool"),
-  });
+  // Fund the lending pool with 100,000 USDT
+  console.log("\nFunding lending pool with 100,000 USDT...");
+  const fundAmount = 100_000n * 1_000_000n; // 100K USDT (6 decimals)
+  const approveTx = await usdtContract.approve(poolAddr, fundAmount);
+  await approveTx.wait();
+  const fundTx = await poolContract.fundPool(fundAmount);
   await fundTx.wait();
-  console.log("  Pool funded ✓");
+  console.log("  Pool funded with 100,000 USDT ✓");
 
   // Save addresses
   const addresses = {
     network: "localhost",
     rpcUrl: "http://127.0.0.1:8545",
+    usdt: usdtAddr,
     identity: identityAddr,
     creditScore: creditAddr,
     guardrails: guardrailsAddr,

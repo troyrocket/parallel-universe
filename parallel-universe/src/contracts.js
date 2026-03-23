@@ -38,8 +38,11 @@ export function getContracts(signer) {
   const revenueEscrow = addresses.revenueEscrow
     ? new ethers.Contract(addresses.revenueEscrow, loadABI("RevenueEscrow"), signer)
     : null;
+  const usdt = addresses.usdt
+    ? new ethers.Contract(addresses.usdt, loadABI("MockUSDT"), signer)
+    : null;
 
-  return { identity, creditScore, guardrails, lendingPool, revenueEscrow, addresses };
+  return { identity, creditScore, guardrails, lendingPool, revenueEscrow, usdt, addresses };
 }
 
 export { loadAddresses };

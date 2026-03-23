@@ -34,10 +34,15 @@ import {
 // ─── Configuration ───
 const AGENT_NAME = "Alice-Explorer";
 const ZK_BASE_SCORE = 680;
-const BORROW_AMOUNT = ethers.parseEther("1");
+const USDT_DECIMALS = 6;
+const BORROW_AMOUNT = 1000n * 1_000_000n; // 1,000 USDT
 const BORROW_DISPLAY = "1,000 USDT";
-const OVER_BORROW_AMOUNT = ethers.parseEther("50");
+const OVER_BORROW_AMOUNT = 50_000n * 1_000_000n; // 50,000 USDT
 const OVER_BORROW_DISPLAY = "50,000 USDT";
+
+function formatUSDT(amount) {
+  return (Number(amount) / 1_000_000).toLocaleString() + " USDT";
+}
 
 // ─── Main Demo ───
 async function main() {
@@ -182,12 +187,12 @@ async function main() {
   await initTx.wait();
   spinner.succeed("Credit score initialized");
 
-  // Set guardrails
+  // Set guardrails (USDT amounts, 6 decimals)
   const setRulesTx = await contracts.guardrails.setRules(
     agentAddress,
-    ethers.parseEther("5"),
-    ethers.parseEther("3"),
-    ethers.parseEther("8")
+    5000n * 1_000_000n,  // max 5,000 USDT
+    3000n * 1_000_000n,  // 3,000 USDT per tx
+    8000n * 1_000_000n   // 8,000 USDT daily
   );
   await setRulesTx.wait();
 
@@ -199,7 +204,7 @@ async function main() {
   }
 
   const capacity = await contracts.creditScore.getBorrowingCapacity(agentAddress);
-  printCreditScore(ZK_BASE_SCORE, "N/A", ZK_BASE_SCORE, 100, 0, ethers.formatEther(capacity).slice(0, 6) + " ETH");
+  printCreditScore(ZK_BASE_SCORE, "N/A", ZK_BASE_SCORE, 100, 0, formatUSDT(capacity));
   printSuccess("Digital Self is now credit-enabled.");
 
   await sleep(1000);
@@ -223,6 +228,12 @@ async function main() {
   printInfo(`Repayment Rate:      ${creditReport.repaymentRate}%`);
   printInfo(`Eligible:            ${creditReport.eligible ? "YES" : "NO"}`);
 
+  // Mint USDT to owner for lending operations
+  if (contracts.usdt) {
+    const mintTx = await contracts.usdt.mint(ownerAddress, 10_000n * 1_000_000n);
+    await mintTx.wait();
+  }
+
   // LendingAgent processes application
   spinner = ora({ text: "LENDING_AGENT processing application...", color: "magenta" }).start();
   await sleep(600);
@@ -232,9 +243,9 @@ async function main() {
     spinner.succeed(`LENDING_AGENT: APPROVED at ${application.terms.rate}% APR`);
 
     printGuardrailCheck([
-      { name: "Max borrow limit", value: "5 ETH", pass: true },
-      { name: "Per-tx cap", value: "3 ETH", pass: true },
-      { name: "Pool liquidity", value: `${ethers.formatEther(application.terms.poolAvailable).slice(0, 6)} ETH`, pass: true },
+      { name: "Max borrow limit", value: "5,000 USDT", pass: true },
+      { name: "Per-tx cap", value: "3,000 USDT", pass: true },
+      { name: "Pool liquidity", value: formatUSDT(application.terms.poolAvailable), pass: true },
     ]);
 
     // Execute loan
@@ -246,11 +257,16 @@ async function main() {
     // Get pool stats
     const [poolAvail, poolOut, poolRes, poolUtil, poolRate] = await contracts.lendingPool.getPoolStats();
     printLoanSummary(BORROW_DISPLAY, `${application.terms.rate}% APR`, (await provider.getBlockNumber()) + 100);
+    printInfo(`Pool liquidity:      ${formatUSDT(poolAvail)}`);
     printInfo(`Pool utilization:    ${Number(poolUtil) / 100}%`);
-    printInfo(`Pool rate:           ${Number(poolRate) / 100}%`);
 
-    // Start RevenueWatcher
-    printSuccess("REVENUE_WATCHER activated — monitoring agent income");
+    // Check agent USDT balance
+    if (contracts.usdt) {
+      const agentUsdtBalance = await contracts.usdt.balanceOf(agentAddress);
+      printInfo(`Digital Self wallet:  ${formatUSDT(agentUsdtBalance)}`);
+    }
+
+    printSuccess("REVENUE_WATCHER activated — monitoring agent USDT income");
   }
 
   await sleep(1000);
@@ -263,30 +279,31 @@ async function main() {
   await typewrite("  Agent completes task and earns revenue...");
   console.log();
 
-  // Simulate agent earning revenue
+  // Simulate agent earning revenue in USDT
   spinner = ora({ text: "Agent executing task...", color: "magenta" }).start();
   await sleep(1500);
   spinner.succeed("Task completed: data analysis for Client-X");
 
-  spinner = ora({ text: "Revenue incoming: 1.5 ETH...", color: "magenta" }).start();
-  // Simulate revenue by sending ETH to agent
-  const revenueTx = await ownerSigner.sendTransaction({
-    to: agentAddress,
-    value: ethers.parseEther("1.5"),
-  });
-  await revenueTx.wait();
-  spinner.succeed("Revenue received: 1.5 ETH");
+  spinner = ora({ text: "Revenue incoming: 1,500 USDT...", color: "magenta" }).start();
+  // Mint USDT to simulate revenue and send to agent
+  if (contracts.usdt) {
+    const revMintTx = await contracts.usdt.mint(agentAddress, 1500n * 1_000_000n);
+    await revMintTx.wait();
+  }
+  spinner.succeed("Revenue received: 1,500 USDT");
 
   // RevenueWatcher detects and triggers repayment
   spinner = ora({ text: "REVENUE_WATCHER detected incoming funds...", color: "magenta" }).start();
   await sleep(800);
   spinner.succeed("REVENUE_WATCHER: funds detected, initiating auto-repay");
 
-  // Repay the loan
+  // Approve USDT and repay the loan
   spinner = ora({ text: "Processing auto-repayment...", color: "magenta" }).start();
-  const repayTx = await contracts.lendingPool.repay(agentAddress, 0, {
-    value: BORROW_AMOUNT,
-  });
+  if (contracts.usdt) {
+    const approveTx = await contracts.usdt.approve(addresses.lendingPool, BORROW_AMOUNT);
+    await approveTx.wait();
+  }
+  const repayTx = await contracts.lendingPool.repay(agentAddress, 0, BORROW_AMOUNT);
   await repayTx.wait();
   spinner.succeed("Loan CLOSED — on-time repayment recorded on-chain");
   printTx(repayTx.hash);
@@ -310,7 +327,7 @@ async function main() {
     Number(compositeAfter),
     Number(weightAfter),
     Number(100n - weightAfter),
-    ethers.formatEther(capacityAfter).slice(0, 6) + " ETH"
+    formatUSDT(capacityAfter)
   );
 
   printSuccess("Digital Self is building independent credit history.");
@@ -328,13 +345,13 @@ async function main() {
   // CreditAgent re-evaluates
   const report2 = await creditAgent.evaluate(agentAddress);
   printInfo(`Credit Score:        ${report2.composite}`);
-  printInfo(`Capacity:            ${ethers.formatEther(report2.capacity).slice(0, 6)} ETH`);
+  printInfo(`Capacity:            ${formatUSDT(report2.capacity)}`);
   printInfo(`Requested:           ${OVER_BORROW_DISPLAY}`);
   printError("DENIED — exceeds capacity");
 
   printGuardrailCheck([
-    { name: "Max borrow limit", value: "5 ETH", pass: false },
-    { name: "Credit capacity", value: `${ethers.formatEther(report2.capacity).slice(0, 6)} ETH`, pass: false },
+    { name: "Max borrow limit", value: "5,000 USDT", pass: false },
+    { name: "Credit capacity", value: formatUSDT(report2.capacity), pass: false },
   ]);
 
   console.log();
@@ -370,14 +387,14 @@ async function main() {
     onChain: Number(finalScores[1]),
     offWeight: Number(finalScores[3]),
     onWeight: Number(100n - finalScores[3]),
-    capacity: ethers.formatEther(finalCapacity).slice(0, 6) + " ETH",
+    capacity: formatUSDT(finalCapacity),
     activities: [
       { ok: true, text: "Digital Self created" },
       { ok: true, text: "ERC-8004 registered" },
       { ok: true, text: "ZK credit verified (Experian + JP Morgan)" },
       { ok: true, text: "Credit score initialized: 680" },
       { ok: true, text: `Borrowed ${BORROW_DISPLAY} (LENDING_AGENT)` },
-      { ok: true, text: "Revenue earned: 1.5 ETH" },
+      { ok: true, text: "Revenue earned: 1,500 USDT" },
       { ok: true, text: "Auto-repaid (REVENUE_WATCHER)" },
       { ok: true, text: `Credit grew: 680 → ${Number(finalScores[2])}` },
       { ok: false, text: `Over-borrow denied (GUARDRAIL)` },

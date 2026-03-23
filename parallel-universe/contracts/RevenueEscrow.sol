@@ -3,23 +3,24 @@ pragma solidity ^0.8.24;
 
 import "./Identity.sol";
 import "./LendingPool.sol";
+import "./MockUSDT.sol";
 
-/// @title RevenueEscrow — Revenue custody and auto-repayment for Digital Selves
-/// @notice Agent task revenue flows here first; auto-splits repayment vs agent funds
+/// @title RevenueEscrow — USDT revenue custody and auto-repayment for Digital Selves
 contract RevenueEscrow {
     Identity public immutable identity;
     LendingPool public immutable lendingPool;
+    MockUSDT public immutable usdt;
 
     struct EscrowAccount {
-        uint256 balance;           // total escrowed funds
-        uint256 repaymentReserve;  // portion earmarked for repayment
-        uint256 totalDeposited;    // lifetime deposits
-        uint256 totalRepaid;       // lifetime repayments via escrow
-        uint256 repaymentRatio;    // percentage of revenue auto-allocated to repayment (0-100)
+        uint256 balance;
+        uint256 repaymentReserve;
+        uint256 totalDeposited;
+        uint256 totalRepaid;
+        uint256 repaymentRatio; // 0-100
         bool active;
     }
 
-    mapping(address => EscrowAccount) public accounts; // agent => escrow
+    mapping(address => EscrowAccount) public accounts;
 
     event RevenueDeposited(address indexed agent, uint256 amount, uint256 toRepayment, uint256 toAgent);
     event AutoRepayment(address indexed agent, uint256 amount, uint256 loanIndex);
@@ -27,12 +28,12 @@ contract RevenueEscrow {
     event ForceReclaimed(address indexed agent, address indexed owner, uint256 amount);
     event RepaymentRatioUpdated(address indexed agent, uint256 newRatio);
 
-    constructor(address _identity, address payable _lendingPool) {
+    constructor(address _identity, address _lendingPool, address _usdt) {
         identity = Identity(_identity);
         lendingPool = LendingPool(_lendingPool);
+        usdt = MockUSDT(_usdt);
     }
 
-    /// @notice Activate escrow for an agent with a repayment ratio
     function activate(address agent, uint256 repaymentRatio) external {
         require(identity.getOwner(agent) == msg.sender, "Not agent owner");
         require(repaymentRatio <= 100, "Ratio must be 0-100");
@@ -47,20 +48,21 @@ contract RevenueEscrow {
         });
     }
 
-    /// @notice Deposit revenue into escrow (called when agent earns income)
-    function depositRevenue(address agent) external payable {
+    /// @notice Deposit USDT revenue into escrow
+    function depositRevenue(address agent, uint256 amount) external {
         require(accounts[agent].active, "Escrow not active");
-        require(msg.value > 0, "Must send value");
+        require(amount > 0, "Must send value");
+        require(usdt.transferFrom(msg.sender, address(this), amount), "Transfer failed");
 
         EscrowAccount storage acct = accounts[agent];
-        uint256 toRepayment = (msg.value * acct.repaymentRatio) / 100;
-        uint256 toAgent = msg.value - toRepayment;
+        uint256 toRepayment = (amount * acct.repaymentRatio) / 100;
+        uint256 toAgent = amount - toRepayment;
 
-        acct.balance += msg.value;
+        acct.balance += amount;
         acct.repaymentReserve += toRepayment;
-        acct.totalDeposited += msg.value;
+        acct.totalDeposited += amount;
 
-        emit RevenueDeposited(agent, msg.value, toRepayment, toAgent);
+        emit RevenueDeposited(agent, amount, toRepayment, toAgent);
     }
 
     /// @notice Auto-repay a loan from the repayment reserve
@@ -68,7 +70,6 @@ contract RevenueEscrow {
         EscrowAccount storage acct = accounts[agent];
         require(acct.active, "Escrow not active");
 
-        // Get loan details
         (uint256 loanAmount,,,,bool repaid) = lendingPool.loans(agent, loanIndex);
         require(!repaid, "Loan already repaid");
         require(acct.repaymentReserve >= loanAmount, "Insufficient repayment reserve");
@@ -77,13 +78,14 @@ contract RevenueEscrow {
         acct.balance -= loanAmount;
         acct.totalRepaid += loanAmount;
 
-        // Send to lending pool as repayment
-        lendingPool.repay{value: loanAmount}(agent, loanIndex);
+        // Approve and repay via USDT
+        usdt.approve(address(lendingPool), loanAmount);
+        lendingPool.repay(agent, loanIndex, loanAmount);
 
         emit AutoRepayment(agent, loanAmount, loanIndex);
     }
 
-    /// @notice Release non-reserved funds to agent (agent can use freely)
+    /// @notice Release non-reserved USDT to agent
     function releaseFunds(address agent, uint256 amount) external {
         require(identity.getOwner(agent) == msg.sender || msg.sender == agent, "Not authorized");
         EscrowAccount storage acct = accounts[agent];
@@ -92,12 +94,12 @@ contract RevenueEscrow {
         require(amount <= available, "Exceeds available funds");
 
         acct.balance -= amount;
-        payable(agent).transfer(amount);
+        require(usdt.transfer(agent, amount), "Transfer failed");
 
         emit FundsReleased(agent, amount);
     }
 
-    /// @notice Force reclaim all funds — owner emergency action when agent defaults
+    /// @notice Force reclaim all USDT — owner emergency action
     function forceReclaim(address agent) external {
         require(identity.getOwner(agent) == msg.sender, "Not agent owner");
         EscrowAccount storage acct = accounts[agent];
@@ -107,12 +109,11 @@ contract RevenueEscrow {
         acct.balance = 0;
         acct.repaymentReserve = 0;
 
-        payable(msg.sender).transfer(amount);
+        require(usdt.transfer(msg.sender, amount), "Transfer failed");
 
         emit ForceReclaimed(agent, msg.sender, amount);
     }
 
-    /// @notice Update repayment ratio
     function setRepaymentRatio(address agent, uint256 newRatio) external {
         require(identity.getOwner(agent) == msg.sender, "Not agent owner");
         require(newRatio <= 100, "Ratio must be 0-100");
@@ -120,11 +121,8 @@ contract RevenueEscrow {
         emit RepaymentRatioUpdated(agent, newRatio);
     }
 
-    /// @notice Get available (non-reserved) balance
     function getAvailable(address agent) external view returns (uint256) {
         EscrowAccount storage acct = accounts[agent];
         return acct.balance - acct.repaymentReserve;
     }
-
-    receive() external payable {}
 }
