@@ -297,9 +297,12 @@ async function main() {
   await sleep(800);
   spinner.succeed("REVENUE_WATCHER: funds detected, initiating auto-repay");
 
-  // Approve USDT and repay the loan
+  // Mint USDT to owner for repayment, approve, then repay
   spinner = ora({ text: "Processing auto-repayment...", color: "magenta" }).start();
   if (contracts.usdt) {
+    // Mint repayment amount to owner (simulating agent routing funds via escrow)
+    const mintForRepay = await contracts.usdt.mint(ownerAddress, BORROW_AMOUNT);
+    await mintForRepay.wait();
     const approveTx = await contracts.usdt.approve(addresses.lendingPool, BORROW_AMOUNT);
     await approveTx.wait();
   }
