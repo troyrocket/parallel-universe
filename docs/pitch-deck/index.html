@@ -107,12 +107,14 @@
     text-transform: uppercase;
     color: #84967e;
   }
-  /* Stats inside two-col: stretch full width */
+  /* Stats inside two-col: stretch full width, compact */
   .stat-stack .stat {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    padding: 24px 36px;
   }
   .stat-stack .stat:last-child { margin-bottom: 0; }
+  .stat-stack .stat-value { font-size: 42px; }
 
   /* Bullet list */
   .bullets {
@@ -121,7 +123,7 @@
   .bullets li {
     font-size: 20px;
     color: #b9ccb2;
-    padding: 12px 0;
+    padding: 10px 0;
     display: flex;
     align-items: baseline;
     gap: 14px;
@@ -646,14 +648,14 @@
   <div class="slide" data-slide="10">
     <div class="slide-label">TEAM</div>
     <h2>Solo founder. <span class="accent">Full-stack builder.</span></h2>
-    <div class="team-card">
-      <div class="team-name">Troy Yan</div>
-      <div class="team-role">Founder &amp; CEO</div>
-      <div class="team-bio">
-        <strong>CS @Penn. Ex-ByteDance.</strong> San Francisco.<br>
-        Backed by <strong>Brock Pierce</strong> (Tether co-founder) &amp; <strong>DNA Fund</strong>.<br><br>
-        Built entire protocol solo — contracts, agents, dashboard, design system.
-      </div>
+    <div style="margin-top: 8px;">
+      <div style="font-size: 36px; font-weight: 700; color: #00FF41; margin-bottom: 24px;">Troy Yan</div>
+      <ul class="bullets">
+        <li><strong>CS @Penn.</strong> Former software engineer at <strong>ByteDance</strong></li>
+        <li>Based in <strong>San Francisco</strong></li>
+        <li>Backed by <strong>Brock Pierce</strong> (Tether co-founder) &amp; <strong>DNA Fund</strong></li>
+        <li>Built entire protocol solo in 3 months — contracts, agents, dashboard</li>
+      </ul>
     </div>
     <div class="page-num">10 / 11</div>
   </div>
@@ -662,13 +664,13 @@
   <div class="slide" data-slide="11">
     <div class="slide-label">THE ASK</div>
     <h2>Building the <span class="accent">JP Morgan</span> for the AI economy.</h2>
-    <div class="ask-box" style="max-width: 560px;">
-      <div class="ask-amount">$2M</div>
-      <div class="ask-type">Pre-Seed Round</div>
-      <ul class="ask-uses">
+    <div style="margin-top: 8px;">
+      <div style="font-size: 64px; font-weight: 700; color: #00FF41; line-height: 1; margin-bottom: 8px;">$2M</div>
+      <div style="font-size: 16px; color: #84967e; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 36px;">Pre-Seed Round</div>
+      <ul class="bullets">
         <li>Founding engineer (ZK / Solidity)</li>
         <li>Mainnet deployment + ZK integration</li>
-        <li>Enterprise pilots (2-3 platforms)</li>
+        <li>Enterprise pilots (2-3 agent platforms)</li>
         <li>Seed liquidity pool</li>
       </ul>
     </div>
