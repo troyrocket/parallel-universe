@@ -39,18 +39,18 @@
 
   /* Label */
   .slide-label {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: #84967e;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
   .slide-label::before {
     content: '';
-    width: 3px; height: 14px;
+    width: 4px; height: 16px;
     background: #00FF41;
   }
 
@@ -59,7 +59,7 @@
     position: absolute;
     bottom: 40px;
     right: 60px;
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.15em;
     color: rgba(0, 255, 65, 0.35);
     font-weight: 500;
@@ -67,51 +67,51 @@
 
   /* Typography */
   h1 {
-    font-size: 52px;
+    font-size: 62px;
     font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    color: #e2e2e2;
+    margin-bottom: 32px;
+    max-width: 1000px;
+  }
+  h2 {
+    font-size: 46px;
+    font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.15;
     color: #e2e2e2;
     margin-bottom: 28px;
-    max-width: 900px;
-  }
-  h2 {
-    font-size: 38px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    color: #e2e2e2;
-    margin-bottom: 24px;
-    max-width: 850px;
+    max-width: 950px;
   }
   .accent { color: #00FF41; }
   .sub {
-    font-size: 18px;
+    font-size: 21px;
     color: #b9ccb2;
     line-height: 1.6;
-    max-width: 640px;
+    max-width: 720px;
   }
 
   /* Stats */
   .stats-row {
     display: flex;
-    gap: 32px;
+    gap: 36px;
     margin-top: 48px;
   }
   .stat {
     background: #1b1b1b;
-    padding: 28px 36px;
-    border-left: 2px solid #00FF41;
+    padding: 32px 44px;
+    border-left: 3px solid #00FF41;
   }
   .stat-value {
-    font-size: 40px;
+    font-size: 48px;
     font-weight: 700;
     color: #00FF41;
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .stat-label {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #84967e;
@@ -120,15 +120,15 @@
   /* Bullet list */
   .bullets {
     list-style: none;
-    margin-top: 20px;
+    margin-top: 24px;
   }
   .bullets li {
-    font-size: 17px;
+    font-size: 20px;
     color: #b9ccb2;
-    padding: 10px 0;
+    padding: 12px 0;
     display: flex;
     align-items: baseline;
-    gap: 12px;
+    gap: 14px;
     line-height: 1.5;
   }
   .bullets li::before {
@@ -147,50 +147,50 @@
   }
   .flow-node {
     background: #1b1b1b;
-    border-left: 2px solid #00FF41;
-    padding: 18px 22px;
+    border-left: 3px solid #00FF41;
+    padding: 22px 28px;
   }
   .flow-node .ft {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     color: #00FF41;
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
   .flow-node .fd {
-    font-size: 11px;
+    font-size: 13px;
     color: #84967e;
-    margin-top: 2px;
+    margin-top: 3px;
   }
   .flow-arrow {
     color: #00FF41;
-    font-size: 18px;
-    padding: 0 6px;
+    font-size: 22px;
+    padding: 0 8px;
     opacity: 0.4;
   }
 
   /* Weight bars */
-  .weight-section { margin-top: 36px; max-width: 560px; }
+  .weight-section { margin-top: 40px; max-width: 640px; }
   .weight-row { margin-bottom: 20px; }
   .weight-label {
-    font-size: 11px;
+    font-size: 13px;
     color: #84967e;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
-  .weight-bar { display: flex; height: 32px; }
+  .weight-bar { display: flex; height: 40px; }
   .seg-real {
     background: #00FF41;
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 600; color: #003907;
+    font-size: 12px; font-weight: 600; color: #003907;
     letter-spacing: 0.08em; text-transform: uppercase;
   }
   .seg-chain {
     background: #1b1b1b;
     border: 1px solid #00FF41;
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 600; color: #00FF41;
+    font-size: 12px; font-weight: 600; color: #00FF41;
     letter-spacing: 0.08em; text-transform: uppercase;
   }
 
@@ -198,17 +198,17 @@
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    margin-top: 28px;
-    max-width: 920px;
+    gap: 64px;
+    margin-top: 32px;
+    max-width: 1000px;
     width: 100%;
   }
   .col-title {
-    font-size: 12px;
+    font-size: 14px;
     color: #00FF41;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .col-title.muted { color: #84967e; }
 
@@ -218,13 +218,13 @@
     display: inline-block;
     background: #1f1f1f;
     border-left: 2px solid #00FF41;
-    padding: 4px 12px;
-    font-size: 10px;
+    padding: 6px 16px;
+    font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #00FF41;
-    margin-right: 8px;
-    margin-bottom: 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
 
   /* Table */
@@ -236,17 +236,17 @@
   }
   .data-table th {
     text-align: left;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #84967e;
-    padding: 10px 16px;
+    padding: 12px 20px;
     border-bottom: 1px solid #3b4b37;
   }
   .data-table td {
-    font-size: 15px;
+    font-size: 17px;
     color: #e2e2e2;
-    padding: 14px 16px;
+    padding: 16px 20px;
     border-bottom: 1px solid rgba(59, 75, 55, 0.12);
   }
   .data-table td:first-child {
@@ -258,20 +258,20 @@
   /* Callout */
   .callout {
     background: #1b1b1b;
-    padding: 28px 36px;
-    border-left: 2px solid #00FF41;
-    max-width: 640px;
-    margin-top: 32px;
+    padding: 36px 44px;
+    border-left: 3px solid #00FF41;
+    max-width: 720px;
+    margin-top: 36px;
   }
   .callout-title {
-    font-size: 12px;
+    font-size: 14px;
     color: #00FF41;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .callout-body {
-    font-size: 15px;
+    font-size: 18px;
     color: #b9ccb2;
     line-height: 1.7;
   }
@@ -280,25 +280,25 @@
   /* Team */
   .team-card {
     background: #1b1b1b;
-    padding: 36px 44px;
-    border-left: 2px solid #00FF41;
-    max-width: 520px;
+    padding: 44px 52px;
+    border-left: 3px solid #00FF41;
+    max-width: 580px;
   }
   .team-name {
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 700;
     color: #e2e2e2;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
   }
   .team-role {
-    font-size: 12px;
+    font-size: 14px;
     color: #00FF41;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
   .team-bio {
-    font-size: 15px;
+    font-size: 18px;
     color: #b9ccb2;
     line-height: 1.7;
   }
@@ -307,63 +307,63 @@
   /* Ask */
   .ask-box {
     background: #1b1b1b;
-    padding: 44px 52px;
+    padding: 48px 56px;
     border-left: 3px solid #00FF41;
-    margin-top: 28px;
-    max-width: 520px;
+    margin-top: 32px;
+    max-width: 560px;
   }
   .ask-amount {
-    font-size: 52px;
+    font-size: 60px;
     font-weight: 700;
     color: #00FF41;
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .ask-type {
-    font-size: 13px;
+    font-size: 15px;
     color: #84967e;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
   .ask-uses { list-style: none; }
   .ask-uses li {
-    font-size: 15px;
+    font-size: 18px;
     color: #b9ccb2;
-    padding: 6px 0;
+    padding: 8px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
   .ask-uses li::before {
     content: '//';
     color: #00FF41;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 13px;
   }
 
   /* Cover */
   .cover-logo {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #00FF41;
-    margin-bottom: 36px;
+    margin-bottom: 40px;
   }
   .cover-logo .cursor { animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
   .cover-tagline {
-    font-size: 64px;
+    font-size: 72px;
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.08;
+    line-height: 1.06;
     color: #e2e2e2;
-    max-width: 800px;
+    max-width: 900px;
   }
   .cover-sub {
-    margin-top: 24px;
-    font-size: 16px;
+    margin-top: 28px;
+    font-size: 19px;
     color: #84967e;
     letter-spacing: 0.02em;
   }
@@ -407,8 +407,8 @@
   }
 
   .contact {
-    margin-top: 40px;
-    font-size: 14px;
+    margin-top: 44px;
+    font-size: 16px;
     color: #84967e;
   }
   .contact .green { color: #00FF41; }
