@@ -24,18 +24,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 80px 140px;
+    padding: 80px 10vw;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease;
   }
   .slide.active { opacity: 1; pointer-events: auto; }
-  .slide.left-align {
-    align-items: flex-start;
-    text-align: left;
-    padding: 80px 10vw;
+
+  /* Cover is the only centered slide */
+  .slide.cover {
+    align-items: center;
+    text-align: center;
   }
 
   /* Label */
@@ -55,7 +54,7 @@
     background: #00FF41;
   }
 
-  /* Page number - bottom right */
+  /* Page number */
   .page-num {
     position: absolute;
     bottom: 40px;
@@ -82,7 +81,7 @@
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: #e2e2e2;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     max-width: 850px;
   }
   .accent { color: #00FF41; }
@@ -103,7 +102,6 @@
     background: #1b1b1b;
     padding: 28px 36px;
     border-left: 2px solid #00FF41;
-    text-align: left;
   }
   .stat-value {
     font-size: 40px;
@@ -123,8 +121,6 @@
   .bullets {
     list-style: none;
     margin-top: 20px;
-    text-align: left;
-    max-width: 700px;
   }
   .bullets li {
     font-size: 17px;
@@ -147,14 +143,12 @@
   .flow {
     display: flex;
     align-items: center;
-    gap: 0;
     margin-top: 40px;
   }
   .flow-node {
     background: #1b1b1b;
     border-left: 2px solid #00FF41;
     padding: 18px 22px;
-    text-align: left;
   }
   .flow-node .ft {
     font-size: 13px;
@@ -176,7 +170,7 @@
   }
 
   /* Weight bars */
-  .weight-section { margin-top: 36px; text-align: left; max-width: 560px; }
+  .weight-section { margin-top: 36px; max-width: 560px; }
   .weight-row { margin-bottom: 20px; }
   .weight-label {
     font-size: 11px;
@@ -185,32 +179,19 @@
     text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .weight-bar {
-    display: flex;
-    height: 32px;
-  }
+  .weight-bar { display: flex; height: 32px; }
   .seg-real {
     background: #00FF41;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #003907;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: #003907;
+    letter-spacing: 0.08em; text-transform: uppercase;
   }
   .seg-chain {
     background: #1b1b1b;
     border: 1px solid #00FF41;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #00FF41;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: #00FF41;
+    letter-spacing: 0.08em; text-transform: uppercase;
   }
 
   /* Two col */
@@ -219,7 +200,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 56px;
     margin-top: 28px;
-    text-align: left;
     max-width: 920px;
     width: 100%;
   }
@@ -253,9 +233,9 @@
     border-collapse: collapse;
     max-width: 780px;
     width: 100%;
-    text-align: left;
   }
   .data-table th {
+    text-align: left;
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -275,12 +255,33 @@
     white-space: nowrap;
   }
 
+  /* Callout */
+  .callout {
+    background: #1b1b1b;
+    padding: 28px 36px;
+    border-left: 2px solid #00FF41;
+    max-width: 640px;
+    margin-top: 32px;
+  }
+  .callout-title {
+    font-size: 12px;
+    color: #00FF41;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .callout-body {
+    font-size: 15px;
+    color: #b9ccb2;
+    line-height: 1.7;
+  }
+  .callout-body strong { color: #e2e2e2; }
+
   /* Team */
   .team-card {
     background: #1b1b1b;
     padding: 36px 44px;
     border-left: 2px solid #00FF41;
-    text-align: left;
     max-width: 520px;
   }
   .team-name {
@@ -308,8 +309,8 @@
     background: #1b1b1b;
     padding: 44px 52px;
     border-left: 3px solid #00FF41;
-    text-align: left;
     margin-top: 28px;
+    max-width: 520px;
   }
   .ask-amount {
     font-size: 52px;
@@ -366,29 +367,6 @@
     color: #84967e;
     letter-spacing: 0.02em;
   }
-
-  /* Callout box */
-  .callout {
-    background: #1b1b1b;
-    padding: 28px 36px;
-    border-left: 2px solid #00FF41;
-    max-width: 640px;
-    text-align: left;
-    margin-top: 32px;
-  }
-  .callout-title {
-    font-size: 12px;
-    color: #00FF41;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .callout-body {
-    font-size: 15px;
-    color: #b9ccb2;
-    line-height: 1.7;
-  }
-  .callout-body strong { color: #e2e2e2; }
 
   /* Top bar */
   .top-bar {
@@ -447,8 +425,8 @@
 
 <div class="deck" id="deck">
 
-  <!-- 00: Cover -->
-  <div class="slide active" data-slide="0">
+  <!-- 00: Cover (centered) -->
+  <div class="slide cover active" data-slide="0">
     <div class="cover-logo"><span class="cursor">>_</span> PARALLEL_UNIVERSE</div>
     <div class="cover-tagline">The credit &amp; financial layer for your <span class="accent">Digital Self</span></div>
     <div class="cover-sub">Banking infrastructure for the AI workforce.</div>
@@ -545,7 +523,7 @@
   </div>
 
   <!-- 05: Why Now -->
-  <div class="slide left-align" data-slide="5">
+  <div class="slide" data-slide="5">
     <div class="slide-label">WHY NOW</div>
     <h1>Three forces <span class="accent">converging</span></h1>
     <div class="two-col">
@@ -612,7 +590,7 @@
   </div>
 
   <!-- 08: Business Model -->
-  <div class="slide left-align" data-slide="8">
+  <div class="slide" data-slide="8">
     <div class="slide-label">BUSINESS MODEL</div>
     <h1>Protocol-level <span class="accent">revenue capture</span></h1>
     <div class="two-col">
@@ -641,7 +619,7 @@
   </div>
 
   <!-- 09: Traction -->
-  <div class="slide left-align" data-slide="9">
+  <div class="slide" data-slide="9">
     <div class="slide-label">TRACTION</div>
     <h2>Built in <span class="accent">3 months</span>. Solo founder.</h2>
     <div class="two-col">
