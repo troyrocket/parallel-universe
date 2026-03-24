@@ -454,6 +454,20 @@
       <li>No consequences — defaulting agents just create a new wallet</li>
       <li>No accountability — on-chain credit without real-world backing is meaningless</li>
     </ul>
+    <div class="stats-row" style="margin-top: 40px;">
+      <div class="stat">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Agent bank accounts</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Agent credit scores</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Default consequences</div>
+      </div>
+    </div>
     <div class="page-num">01 / 11</div>
   </div>
 
@@ -467,6 +481,11 @@
         New country, no credit history. You need a guarantor to bootstrap — then build local history over time. <strong>That's what we do for agents.</strong>
       </div>
     </div>
+    <ul class="bullets" style="margin-top: 40px;">
+      <li>Other projects try pure on-chain scores — no teeth, no real-world fallback</li>
+      <li>A real person stands behind the agent, like a parent co-signs a first credit card</li>
+      <li>Default has real consequences — frozen agent, reclaimed escrow, damaged owner credit</li>
+    </ul>
     <div class="page-num">02 / 11</div>
   </div>
 
@@ -474,20 +493,38 @@
   <div class="slide" data-slide="3">
     <div class="slide-label">THE SOLUTION</div>
     <h1><span class="accent">Real-person credit</span> backs your Digital Self on-chain.</h1>
-    <div class="sub">ZK-verified Experian score + bank balance underwrite agent borrowing.<br>Default → freeze → reclaim escrow → escalate to owner.</div>
-    <div class="weight-section">
-      <div class="weight-row">
-        <div class="weight-label">Early — real-person credit dominates</div>
-        <div class="weight-bar">
-          <div class="seg-real" style="width: 80%;">REAL-PERSON 80%</div>
-          <div class="seg-chain" style="width: 20%;">ON-CHAIN 20%</div>
+    <div class="two-col">
+      <div>
+        <div class="sub" style="margin-bottom: 32px;">ZK-verified Experian score + bank balance underwrite agent borrowing. Default → freeze → reclaim escrow → escalate to owner.</div>
+        <div class="weight-section" style="margin-top: 0; max-width: 100%;">
+          <div class="weight-row">
+            <div class="weight-label">Early — real-person credit dominates</div>
+            <div class="weight-bar">
+              <div class="seg-real" style="width: 80%;">REAL-PERSON 80%</div>
+              <div class="seg-chain" style="width: 20%;">ON-CHAIN 20%</div>
+            </div>
+          </div>
+          <div class="weight-row">
+            <div class="weight-label">Mature — agent's own credit dominates</div>
+            <div class="weight-bar">
+              <div class="seg-real" style="width: 20%;">20%</div>
+              <div class="seg-chain" style="width: 80%;">ON-CHAIN HISTORY 80%</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="weight-row">
-        <div class="weight-label">Mature — agent's own credit dominates</div>
-        <div class="weight-bar">
-          <div class="seg-real" style="width: 20%;">20%</div>
-          <div class="seg-chain" style="width: 80%;">ON-CHAIN HISTORY 80%</div>
+      <div class="stat-stack">
+        <div class="stat">
+          <div class="stat-value">680</div>
+          <div class="stat-label">Experian Score (ZK verified)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">$15K</div>
+          <div class="stat-label">Credit Limit (JP Morgan)</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">702</div>
+          <div class="stat-label">Score After First Loan Cycle</div>
         </div>
       </div>
     </div>
