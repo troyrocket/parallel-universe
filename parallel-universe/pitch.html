@@ -5,7 +5,6 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Parallel Universe — Pitch Deck</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -17,7 +16,6 @@
     width: 100vw;
   }
 
-  /* Slide container */
   .deck { position: relative; width: 100vw; height: 100vh; }
   .slide {
     position: absolute;
@@ -26,247 +24,385 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px 120px;
+    align-items: center;
+    text-align: center;
+    padding: 80px 140px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease;
   }
   .slide.active { opacity: 1; pointer-events: auto; }
+  .slide.left-align {
+    align-items: flex-start;
+    text-align: left;
+    padding: 80px 10vw;
+  }
 
-  /* Typography */
+  /* Label */
   .slide-label {
     font-size: 11px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #b9ccb2;
-    margin-bottom: 16px;
+    color: #84967e;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 8px;
   }
   .slide-label::before {
     content: '';
-    display: inline-block;
-    width: 3px;
-    height: 14px;
+    width: 3px; height: 14px;
     background: #00FF41;
   }
-  .slide-number {
+
+  /* Page number - bottom right */
+  .page-num {
     position: absolute;
-    top: 40px;
+    bottom: 40px;
     right: 60px;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: rgba(0, 255, 65, 0.3);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: rgba(0, 255, 65, 0.35);
+    font-weight: 500;
   }
+
+  /* Typography */
   h1 {
-    font-size: 56px;
+    font-size: 52px;
     font-weight: 700;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1.15;
     color: #e2e2e2;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
+    max-width: 900px;
   }
-  h1 .accent { color: #00FF41; }
   h2 {
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: #e2e2e2;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    max-width: 850px;
   }
-  h2 .accent { color: #00FF41; }
-  .subtitle {
-    font-size: 20px;
-    font-weight: 300;
-    color: #b9ccb2;
-    line-height: 1.6;
-    max-width: 720px;
-  }
-  .body-text {
+  .accent { color: #00FF41; }
+  .sub {
     font-size: 18px;
     color: #b9ccb2;
-    line-height: 1.7;
-    max-width: 680px;
+    line-height: 1.6;
+    max-width: 640px;
   }
 
-  /* Stat cards */
+  /* Stats */
   .stats-row {
     display: flex;
-    gap: 40px;
+    gap: 32px;
     margin-top: 48px;
   }
   .stat {
     background: #1b1b1b;
-    padding: 32px 40px;
+    padding: 28px 36px;
     border-left: 2px solid #00FF41;
-    min-width: 200px;
+    text-align: left;
   }
   .stat-value {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 700;
     color: #00FF41;
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .stat-label {
     font-size: 11px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #84967e;
   }
 
-  /* Lists */
-  .point-list {
+  /* Bullet list */
+  .bullets {
     list-style: none;
-    margin-top: 24px;
+    margin-top: 20px;
+    text-align: left;
+    max-width: 700px;
   }
-  .point-list li {
-    font-size: 18px;
+  .bullets li {
+    font-size: 17px;
     color: #b9ccb2;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(59, 75, 55, 0.2);
+    padding: 10px 0;
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     gap: 12px;
     line-height: 1.5;
   }
-  .point-list li::before {
+  .bullets li::before {
     content: '>';
     color: #00FF41;
     font-weight: 700;
     flex-shrink: 0;
   }
+  .bullets li strong { color: #e2e2e2; }
 
-  /* Tables */
-  .data-table {
-    margin-top: 32px;
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
-  }
-  .data-table th {
-    text-align: left;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #84967e;
-    padding: 12px 20px;
-    border-bottom: 1px solid #3b4b37;
-  }
-  .data-table td {
-    font-size: 16px;
-    color: #e2e2e2;
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(59, 75, 55, 0.15);
-  }
-  .data-table td:first-child {
-    color: #00FF41;
-    font-weight: 600;
-  }
-
-  /* Flow diagram */
+  /* Flow */
   .flow {
     display: flex;
     align-items: center;
     gap: 0;
     margin-top: 40px;
-    flex-wrap: wrap;
   }
   .flow-node {
     background: #1b1b1b;
     border-left: 2px solid #00FF41;
-    padding: 20px 24px;
-    min-width: 140px;
+    padding: 18px 22px;
+    text-align: left;
   }
-  .flow-node .flow-title {
+  .flow-node .ft {
     font-size: 13px;
     font-weight: 600;
     color: #00FF41;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-bottom: 4px;
   }
-  .flow-node .flow-desc {
+  .flow-node .fd {
     font-size: 11px;
     color: #84967e;
+    margin-top: 2px;
   }
   .flow-arrow {
     color: #00FF41;
-    font-size: 20px;
-    padding: 0 8px;
-    opacity: 0.5;
+    font-size: 18px;
+    padding: 0 6px;
+    opacity: 0.4;
   }
 
-  /* Cover special */
+  /* Weight bars */
+  .weight-section { margin-top: 36px; text-align: left; max-width: 560px; }
+  .weight-row { margin-bottom: 20px; }
+  .weight-label {
+    font-size: 11px;
+    color: #84967e;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .weight-bar {
+    display: flex;
+    height: 32px;
+  }
+  .seg-real {
+    background: #00FF41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: #003907;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .seg-chain {
+    background: #1b1b1b;
+    border: 1px solid #00FF41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: #00FF41;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Two col */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    margin-top: 28px;
+    text-align: left;
+    max-width: 920px;
+    width: 100%;
+  }
+  .col-title {
+    font-size: 12px;
+    color: #00FF41;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .col-title.muted { color: #84967e; }
+
+  /* Chips */
+  .chips { margin-top: 40px; }
+  .chip {
+    display: inline-block;
+    background: #1f1f1f;
+    border-left: 2px solid #00FF41;
+    padding: 4px 12px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00FF41;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* Table */
+  .data-table {
+    margin-top: 28px;
+    border-collapse: collapse;
+    max-width: 780px;
+    width: 100%;
+    text-align: left;
+  }
+  .data-table th {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #84967e;
+    padding: 10px 16px;
+    border-bottom: 1px solid #3b4b37;
+  }
+  .data-table td {
+    font-size: 15px;
+    color: #e2e2e2;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(59, 75, 55, 0.12);
+  }
+  .data-table td:first-child {
+    color: #00FF41;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Team */
+  .team-card {
+    background: #1b1b1b;
+    padding: 36px 44px;
+    border-left: 2px solid #00FF41;
+    text-align: left;
+    max-width: 520px;
+  }
+  .team-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #e2e2e2;
+    margin-bottom: 2px;
+  }
+  .team-role {
+    font-size: 12px;
+    color: #00FF41;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .team-bio {
+    font-size: 15px;
+    color: #b9ccb2;
+    line-height: 1.7;
+  }
+  .team-bio strong { color: #e2e2e2; }
+
+  /* Ask */
+  .ask-box {
+    background: #1b1b1b;
+    padding: 44px 52px;
+    border-left: 3px solid #00FF41;
+    text-align: left;
+    margin-top: 28px;
+  }
+  .ask-amount {
+    font-size: 52px;
+    font-weight: 700;
+    color: #00FF41;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .ask-type {
+    font-size: 13px;
+    color: #84967e;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .ask-uses { list-style: none; }
+  .ask-uses li {
+    font-size: 15px;
+    color: #b9ccb2;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ask-uses li::before {
+    content: '//';
+    color: #00FF41;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  /* Cover */
   .cover-logo {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #00FF41;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    margin-bottom: 36px;
   }
   .cover-logo .cursor { animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
-
   .cover-tagline {
-    font-size: 72px;
+    font-size: 64px;
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.05;
+    line-height: 1.08;
     color: #e2e2e2;
-    max-width: 900px;
+    max-width: 800px;
   }
-  .cover-tagline .accent { color: #00FF41; }
   .cover-sub {
-    margin-top: 32px;
-    font-size: 18px;
+    margin-top: 24px;
+    font-size: 16px;
     color: #84967e;
     letter-spacing: 0.02em;
   }
 
-  /* Progress bar */
-  .progress {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background: #00FF41;
-    transition: width 0.4s ease;
-    z-index: 100;
+  /* Callout box */
+  .callout {
+    background: #1b1b1b;
+    padding: 28px 36px;
+    border-left: 2px solid #00FF41;
+    max-width: 640px;
+    text-align: left;
+    margin-top: 32px;
   }
-
-  /* Nav hint */
-  .nav-hint {
-    position: fixed;
-    bottom: 24px;
-    right: 60px;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: rgba(132, 150, 126, 0.5);
+  .callout-title {
+    font-size: 12px;
+    color: #00FF41;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    z-index: 100;
+    margin-bottom: 10px;
   }
+  .callout-body {
+    font-size: 15px;
+    color: #b9ccb2;
+    line-height: 1.7;
+  }
+  .callout-body strong { color: #e2e2e2; }
 
   /* Top bar */
   .top-bar {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
-    height: 60px;
+    height: 56px;
     background: #131313;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 60px;
     z-index: 100;
-    border-bottom: 1px solid rgba(59, 75, 55, 0.15);
+    border-bottom: 1px solid rgba(59, 75, 55, 0.12);
   }
   .top-bar-brand {
     font-size: 11px;
@@ -282,159 +418,41 @@
     text-transform: uppercase;
   }
 
-  /* Two column layout */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-top: 32px;
-  }
-
-  /* Chip */
-  .chip {
-    display: inline-block;
-    background: #1f1f1f;
-    border-left: 2px solid #00FF41;
-    padding: 4px 12px;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #00FF41;
-    margin-right: 8px;
-    margin-bottom: 8px;
-  }
-
-  /* Weight bar visualization */
-  .weight-bar {
-    display: flex;
-    height: 32px;
-    margin-top: 16px;
-    margin-bottom: 8px;
-    max-width: 500px;
-  }
-  .weight-bar .segment-real {
+  /* Progress */
+  .progress {
+    position: fixed;
+    bottom: 0; left: 0;
+    height: 2px;
     background: #00FF41;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #003907;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .weight-bar .segment-onchain {
-    background: #1b1b1b;
-    border: 1px solid #00FF41;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #00FF41;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .weight-label {
-    font-size: 11px;
-    color: #84967e;
-    letter-spacing: 0.05em;
+    transition: width 0.4s ease;
+    z-index: 100;
   }
 
-  /* Team */
-  .team-card {
-    background: #1b1b1b;
-    padding: 40px;
-    border-left: 2px solid #00FF41;
-    max-width: 500px;
-  }
-  .team-name {
-    font-size: 28px;
-    font-weight: 700;
-    color: #e2e2e2;
-    margin-bottom: 4px;
-  }
-  .team-role {
-    font-size: 13px;
-    color: #00FF41;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .team-bio {
-    font-size: 16px;
-    color: #b9ccb2;
-    line-height: 1.7;
-  }
-  .team-bio strong { color: #e2e2e2; }
-
-  /* Ask slide */
-  .ask-box {
-    background: #1b1b1b;
-    padding: 48px 56px;
-    border-left: 3px solid #00FF41;
-    max-width: 600px;
-    margin-top: 32px;
-  }
-  .ask-amount {
-    font-size: 56px;
-    font-weight: 700;
-    color: #00FF41;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .ask-type {
+  .contact {
+    margin-top: 40px;
     font-size: 14px;
     color: #84967e;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
   }
-  .ask-uses { list-style: none; }
-  .ask-uses li {
-    font-size: 16px;
-    color: #b9ccb2;
-    padding: 8px 0;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .ask-uses li::before {
-    content: '//';
-    color: #00FF41;
-    font-weight: 700;
-    font-size: 12px;
-  }
+  .contact .green { color: #00FF41; }
 </style>
 </head>
 <body>
 
-<!-- Top Bar -->
 <div class="top-bar">
   <span class="top-bar-brand">>_ PARALLEL_UNIVERSE</span>
   <span class="top-bar-info">CONFIDENTIAL // MARCH 2026</span>
 </div>
 
-<!-- Progress Bar -->
 <div class="progress" id="progress"></div>
-
-<!-- Nav Hint -->
-<div class="nav-hint">← → NAVIGATE &nbsp;&nbsp; ESC OVERVIEW</div>
 
 <div class="deck" id="deck">
 
-  <!-- SLIDE 0: Cover -->
+  <!-- 00: Cover -->
   <div class="slide active" data-slide="0">
-    <div class="cover-logo">
-      <span class="cursor">>_</span> PARALLEL_UNIVERSE
-    </div>
-    <div class="cover-tagline">
-      The credit &amp; financial layer for your <span class="accent">Digital Self</span>
-    </div>
-    <div class="cover-sub">
-      Banking infrastructure for the AI workforce — identity, credit, lending, revenue, collection.
-    </div>
-    <div class="stats-row" style="margin-top: 64px;">
+    <div class="cover-logo"><span class="cursor">>_</span> PARALLEL_UNIVERSE</div>
+    <div class="cover-tagline">The credit &amp; financial layer for your <span class="accent">Digital Self</span></div>
+    <div class="cover-sub">Banking infrastructure for the AI workforce.</div>
+    <div class="stats-row" style="margin-top: 56px;">
       <div class="stat">
         <div class="stat-value">6</div>
         <div class="stat-label">Smart Contracts</div>
@@ -445,149 +463,123 @@
       </div>
       <div class="stat">
         <div class="stat-value">Live</div>
-        <div class="stat-label">Sepolia Testnet</div>
+        <div class="stat-label">On Sepolia</div>
       </div>
     </div>
-    <div class="slide-number">00 / 11</div>
+    <div class="page-num">00 / 11</div>
   </div>
 
-  <!-- SLIDE 1: Problem -->
+  <!-- 01: Problem -->
   <div class="slide" data-slide="1">
     <div class="slide-label">THE PROBLEM</div>
-    <h1><span class="accent">$4.6T</span> in agent-driven transactions by 2028.<br>Zero financial infrastructure.</h1>
-    <div class="body-text">
-      AI agents are becoming an economic workforce — they trade, negotiate, spend, and earn. But they have no financial identity. They can't open bank accounts. They can't get credit. They can't be held accountable.
-    </div>
-    <ul class="point-list" style="margin-top: 32px; max-width: 700px;">
-      <li>Agents can be shut down and recreated at any time — no persistent identity</li>
-      <li>A defaulting agent just creates a new wallet and walks away — no consequences</li>
-      <li>Without real-world accountability, on-chain credit is meaningless</li>
+    <h1><span class="accent">$4.6T</span> in agent transactions by 2028.<br>Zero financial infrastructure.</h1>
+    <ul class="bullets">
+      <li>No persistent identity — agents are created and destroyed at will</li>
+      <li>No consequences — defaulting agents just create a new wallet</li>
+      <li>No accountability — on-chain credit without real-world backing is meaningless</li>
     </ul>
-    <div class="slide-number">01 / 11</div>
+    <div class="page-num">01 / 11</div>
   </div>
 
-  <!-- SLIDE 2: Insight -->
+  <!-- 02: Insight -->
   <div class="slide" data-slide="2">
     <div class="slide-label">THE INSIGHT</div>
-    <h1>Credit without <span class="accent">consequences</span> isn't credit.<br>It's a suggestion.</h1>
-    <div class="body-text" style="margin-bottom: 40px;">
-      Other projects try pure on-chain credit scores. But scores without teeth are useless. The missing piece: a real person standing behind the agent, the way a parent co-signs for a teenager's first credit card.
-    </div>
-    <div style="background: #1b1b1b; padding: 32px 40px; border-left: 2px solid #00FF41; max-width: 700px;">
-      <div style="font-size: 14px; color: #00FF41; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">The Immigrant Credit Analogy</div>
-      <div style="font-size: 16px; color: #b9ccb2; line-height: 1.7;">
-        When you move to a new country, your home credit doesn't transfer. You start from zero. But with a guarantor, you can bootstrap — then build local history over time. <strong style="color: #e2e2e2;">That's exactly what we do for agents.</strong>
+    <h1>Credit without <span class="accent">consequences</span><br>isn't credit. It's a suggestion.</h1>
+    <div class="callout">
+      <div class="callout-title">The Immigrant Credit Analogy</div>
+      <div class="callout-body">
+        New country, no credit history. You need a guarantor to bootstrap — then build local history over time. <strong>That's what we do for agents.</strong>
       </div>
     </div>
-    <div class="slide-number">02 / 11</div>
+    <div class="page-num">02 / 11</div>
   </div>
 
-  <!-- SLIDE 3: Solution -->
+  <!-- 03: Solution -->
   <div class="slide" data-slide="3">
     <div class="slide-label">THE SOLUTION</div>
     <h1><span class="accent">Real-person credit</span> backs your Digital Self on-chain.</h1>
-    <div class="body-text" style="margin-bottom: 32px;">
-      Your Experian score, bank balance, and credit limits are verified via ZK proofs and used to underwrite your Digital Self's borrowing capacity. Default → freeze agent → reclaim escrow → escalate to owner.
-    </div>
-    <div style="margin-bottom: 16px;">
-      <div class="weight-label">EARLY STAGE — Real-person credit dominates</div>
-      <div class="weight-bar">
-        <div class="segment-real" style="width: 80%;">REAL-PERSON 80%</div>
-        <div class="segment-onchain" style="width: 20%;">ON-CHAIN 20%</div>
+    <div class="sub">ZK-verified Experian score + bank balance underwrite agent borrowing.<br>Default → freeze → reclaim escrow → escalate to owner.</div>
+    <div class="weight-section">
+      <div class="weight-row">
+        <div class="weight-label">Early — real-person credit dominates</div>
+        <div class="weight-bar">
+          <div class="seg-real" style="width: 80%;">REAL-PERSON 80%</div>
+          <div class="seg-chain" style="width: 20%;">ON-CHAIN 20%</div>
+        </div>
+      </div>
+      <div class="weight-row">
+        <div class="weight-label">Mature — agent's own credit dominates</div>
+        <div class="weight-bar">
+          <div class="seg-real" style="width: 20%;">20%</div>
+          <div class="seg-chain" style="width: 80%;">ON-CHAIN HISTORY 80%</div>
+        </div>
       </div>
     </div>
-    <div>
-      <div class="weight-label">MATURE — Agent's own credit dominates</div>
-      <div class="weight-bar">
-        <div class="segment-real" style="width: 20%;">20%</div>
-        <div class="segment-onchain" style="width: 80%;">ON-CHAIN HISTORY 80%</div>
-      </div>
-    </div>
-    <div class="slide-number">03 / 11</div>
+    <div class="page-num">03 / 11</div>
   </div>
 
-  <!-- SLIDE 4: How It Works -->
+  <!-- 04: Full Stack -->
   <div class="slide" data-slide="4">
     <div class="slide-label">FULL FINANCIAL STACK</div>
-    <h2>Not just a credit score — a complete <span class="accent">banking system</span> for agents.</h2>
+    <h2>Not a credit score. A complete <span class="accent">banking system</span>.</h2>
     <div class="flow">
-      <div class="flow-node">
-        <div class="flow-title">Identity</div>
-        <div class="flow-desc">ERC-8004 soulbound token</div>
-      </div>
+      <div class="flow-node"><div class="ft">Identity</div><div class="fd">ERC-8004 soulbound</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="flow-title">Credit</div>
-        <div class="flow-desc">ZK dual-layer scoring</div>
-      </div>
+      <div class="flow-node"><div class="ft">Credit</div><div class="fd">ZK dual-layer</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="flow-title">Lending</div>
-        <div class="flow-desc">Jump Rate liquidity pools</div>
-      </div>
+      <div class="flow-node"><div class="ft">Lending</div><div class="fd">Jump Rate pools</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="flow-title">Revenue</div>
-        <div class="flow-desc">Escrow + auto-repay</div>
-      </div>
+      <div class="flow-node"><div class="ft">Revenue</div><div class="fd">Escrow + auto-repay</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="flow-title">Risk</div>
-        <div class="flow-desc">Guardrails + collection</div>
-      </div>
+      <div class="flow-node"><div class="ft">Risk</div><div class="fd">Guardrails</div></div>
       <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="flow-title">Escalation</div>
-        <div class="flow-desc">Real-person fallback</div>
-      </div>
+      <div class="flow-node"><div class="ft">Escalation</div><div class="fd">Human fallback</div></div>
     </div>
-    <div style="margin-top: 48px;">
+    <div class="chips">
       <div class="chip">USDT DENOMINATED</div>
       <div class="chip">COMPOUND-INSPIRED</div>
       <div class="chip">5 AUTONOMOUS AGENTS</div>
       <div class="chip">FULLY ON-CHAIN</div>
     </div>
-    <div class="slide-number">04 / 11</div>
+    <div class="page-num">04 / 11</div>
   </div>
 
-  <!-- SLIDE 5: Why Now -->
-  <div class="slide" data-slide="5">
+  <!-- 05: Why Now -->
+  <div class="slide left-align" data-slide="5">
     <div class="slide-label">WHY NOW</div>
     <h1>Three forces <span class="accent">converging</span></h1>
-    <div class="two-col" style="max-width: 900px;">
+    <div class="two-col">
+      <ul class="bullets" style="margin-top: 0;">
+        <li><strong>Agents transact autonomously</strong> — OpenAI Operator, Anthropic Computer Use, Gemini agents</li>
+        <li><strong>ZK proofs are production-ready</strong> — Reclaim Protocol, tlsnotary</li>
+        <li><strong>Stablecoin rails are mature</strong> — Tether WDK, self-custodial agent wallets</li>
+      </ul>
       <div>
-        <ul class="point-list">
-          <li><strong style="color: #e2e2e2;">Agents are becoming economic actors.</strong> OpenAI Operator, Anthropic Computer Use, Google Gemini agents — AI can now autonomously transact, negotiate, and earn revenue.</li>
-          <li><strong style="color: #e2e2e2;">ZK proofs are production-ready.</strong> Reclaim Protocol, tlsnotary — verifying real-world data on-chain without exposing PII is now possible.</li>
-          <li><strong style="color: #e2e2e2;">Stablecoin infrastructure is mature.</strong> USDT is the settlement layer. Tether WDK enables self-custodial agent wallets. The plumbing exists.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="stat" style="margin-bottom: 24px;">
+        <div class="stat" style="margin-bottom: 20px;">
           <div class="stat-value">$4.6T</div>
-          <div class="stat-label">Agent Economy by 2028 (Gartner)</div>
+          <div class="stat-label">Agent Economy 2028</div>
         </div>
-        <div class="stat" style="margin-bottom: 24px;">
+        <div class="stat" style="margin-bottom: 20px;">
           <div class="stat-value">82%</div>
-          <div class="stat-label">Enterprises plan AI agents by 2027</div>
+          <div class="stat-label">Enterprises adding agents by 2027</div>
         </div>
         <div class="stat">
           <div class="stat-value">0</div>
-          <div class="stat-label">Agent credit systems exist today</div>
+          <div class="stat-label">Agent credit systems today</div>
         </div>
       </div>
     </div>
-    <div class="slide-number">05 / 11</div>
+    <div class="page-num">05 / 11</div>
   </div>
 
-  <!-- SLIDE 6: Market Size -->
+  <!-- 06: Market -->
   <div class="slide" data-slide="6">
     <div class="slide-label">MARKET</div>
     <h1>The <span class="accent">banking layer</span> for a new economic class</h1>
     <div class="stats-row">
       <div class="stat">
         <div class="stat-value">$4.6T</div>
-        <div class="stat-label">TAM — Agent Economy (2028)</div>
+        <div class="stat-label">TAM — Agent Economy</div>
       </div>
       <div class="stat">
         <div class="stat-value">$180B</div>
@@ -595,156 +587,122 @@
       </div>
       <div class="stat">
         <div class="stat-value">$2.4B</div>
-        <div class="stat-label">SOM — Agent Credit Infra (Year 3)</div>
+        <div class="stat-label">SOM — Credit Infra (Year 3)</div>
       </div>
     </div>
-    <div class="body-text" style="margin-top: 40px;">
-      Every agent that borrows, earns, or transacts needs a credit identity. We capture value at the protocol layer — interest spread on every loan, fees on every credit check, yield on the risk reserve.
-    </div>
-    <div class="slide-number">06 / 11</div>
+    <div class="page-num">06 / 11</div>
   </div>
 
-  <!-- SLIDE 7: Product / Demo -->
+  <!-- 07: Product -->
   <div class="slide" data-slide="7">
     <div class="slide-label">PRODUCT — LIVE ON SEPOLIA</div>
-    <h2>6 contracts. 5 agents. <span class="accent">End-to-end demo.</span></h2>
+    <h2>6 contracts. 5 agents. <span class="accent">End-to-end.</span></h2>
     <table class="data-table">
-      <thead>
-        <tr>
-          <th>Contract</th>
-          <th>Function</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Contract</th><th>Function</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Identity.sol</td>
-          <td>ERC-8004 soulbound token — binds Digital Self to real person</td>
-        </tr>
-        <tr>
-          <td>CreditScore.sol</td>
-          <td>Dual-layer scoring — ZK off-chain base + on-chain behavior</td>
-        </tr>
-        <tr>
-          <td>Guardrails.sol</td>
-          <td>Behavioral safety — max borrow limits, per-tx caps, emergency freeze</td>
-        </tr>
-        <tr>
-          <td>LendingPool.sol</td>
-          <td>Jump Rate interest model — Compound-inspired, USDT denominated</td>
-        </tr>
-        <tr>
-          <td>RevenueEscrow.sol</td>
-          <td>Revenue custody — auto-split between repayment and agent funds</td>
-        </tr>
-        <tr>
-          <td>USDTMint.sol</td>
-          <td>Tether USD ERC-20 token for testnet simulation</td>
-        </tr>
+        <tr><td>Identity</td><td>ERC-8004 soulbound — binds agent to real person</td></tr>
+        <tr><td>CreditScore</td><td>Dual-layer — ZK off-chain + on-chain behavior</td></tr>
+        <tr><td>Guardrails</td><td>Borrow limits, per-tx caps, emergency freeze</td></tr>
+        <tr><td>LendingPool</td><td>Jump Rate interest, USDT denominated</td></tr>
+        <tr><td>RevenueEscrow</td><td>Auto-split repayment + agent funds</td></tr>
+        <tr><td>USDTMint</td><td>Tether USD ERC-20 for testnet</td></tr>
       </tbody>
     </table>
-    <div class="slide-number">07 / 11</div>
+    <div class="page-num">07 / 11</div>
   </div>
 
-  <!-- SLIDE 8: Business Model -->
-  <div class="slide" data-slide="8">
+  <!-- 08: Business Model -->
+  <div class="slide left-align" data-slide="8">
     <div class="slide-label">BUSINESS MODEL</div>
     <h1>Protocol-level <span class="accent">revenue capture</span></h1>
-    <div class="two-col" style="max-width: 900px; margin-top: 32px;">
+    <div class="two-col">
+      <ul class="bullets" style="margin-top: 0;">
+        <li><strong>Interest spread</strong> on every loan</li>
+        <li><strong>Verification fees</strong> per ZK proof</li>
+        <li><strong>Risk reserve yield</strong> — 10% of interest</li>
+        <li><strong>Enterprise SaaS</strong> — fleet management</li>
+      </ul>
       <div>
-        <ul class="point-list">
-          <li><strong style="color: #e2e2e2;">Interest spread</strong> — percentage of every loan's interest flows to the protocol. Jump Rate model ensures capital efficiency.</li>
-          <li><strong style="color: #e2e2e2;">Credit verification fees</strong> — each ZK proof verification (identity, credit score, bank balance) charges a protocol fee.</li>
-          <li><strong style="color: #e2e2e2;">Risk reserve yield</strong> — 10% of all interest goes to risk reserve. Reserve earns yield when idle.</li>
-          <li><strong style="color: #e2e2e2;">Enterprise SaaS</strong> — companies managing agent fleets pay for dashboard, analytics, and guardrail configuration.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="stat" style="margin-bottom: 24px;">
+        <div class="stat" style="margin-bottom: 20px;">
           <div class="stat-value">10%</div>
           <div class="stat-label">Interest → Risk Reserve</div>
         </div>
-        <div class="stat" style="margin-bottom: 24px;">
+        <div class="stat" style="margin-bottom: 20px;">
           <div class="stat-value">80%</div>
           <div class="stat-label">Utilization Kink Point</div>
         </div>
         <div class="stat">
           <div class="stat-value">∞</div>
-          <div class="stat-label">Agents Served Per Pool</div>
+          <div class="stat-label">Agents Per Pool</div>
         </div>
       </div>
     </div>
-    <div class="slide-number">08 / 11</div>
+    <div class="page-num">08 / 11</div>
   </div>
 
-  <!-- SLIDE 9: Traction & Roadmap -->
-  <div class="slide" data-slide="9">
-    <div class="slide-label">TRACTION &amp; ROADMAP</div>
-    <h2>Built and deployed in <span class="accent">3 months</span>, solo founder.</h2>
-    <div class="two-col" style="max-width: 900px; margin-top: 16px;">
+  <!-- 09: Traction -->
+  <div class="slide left-align" data-slide="9">
+    <div class="slide-label">TRACTION</div>
+    <h2>Built in <span class="accent">3 months</span>. Solo founder.</h2>
+    <div class="two-col">
       <div>
-        <div style="font-size: 13px; color: #00FF41; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">Done</div>
-        <ul class="point-list">
-          <li>6 smart contracts deployed on Sepolia</li>
-          <li>5 autonomous agents coordinating full lending lifecycle</li>
-          <li>Web dashboard for Digital Self fleet management</li>
-          <li>Tether WDK integration — self-custodial agent wallets</li>
-          <li>8-scene end-to-end demo</li>
-          <li>Delaware C Corp incorporated</li>
+        <div class="col-title">Done</div>
+        <ul class="bullets" style="margin-top: 0;">
+          <li>6 contracts deployed on Sepolia</li>
+          <li>5 agents — full lending lifecycle</li>
+          <li>Web dashboard + CLI demo</li>
+          <li>Tether WDK integration</li>
+          <li>Delaware C Corp</li>
         </ul>
       </div>
       <div>
-        <div style="font-size: 13px; color: #84967e; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">Next</div>
-        <ul class="point-list">
-          <li>Production ZK proofs via Reclaim Protocol / tlsnotary</li>
-          <li>Mainnet deployment (Ethereum L2)</li>
-          <li>Multi-chain liquidity pools</li>
-          <li>Enterprise API — let platforms plug their agents into our credit stack</li>
-          <li>Tokenized loan positions as composable DeFi primitives</li>
+        <div class="col-title muted">Next</div>
+        <ul class="bullets" style="margin-top: 0;">
+          <li>Production ZK (Reclaim / tlsnotary)</li>
+          <li>Mainnet deployment (L2)</li>
+          <li>Enterprise API</li>
+          <li>Tokenized loan positions</li>
         </ul>
       </div>
     </div>
-    <div class="slide-number">09 / 11</div>
+    <div class="page-num">09 / 11</div>
   </div>
 
-  <!-- SLIDE 10: Team -->
+  <!-- 10: Team -->
   <div class="slide" data-slide="10">
     <div class="slide-label">TEAM</div>
     <h2>Solo founder. <span class="accent">Full-stack builder.</span></h2>
     <div class="team-card">
       <div class="team-name">Troy Yan</div>
-      <div class="team-role">FOUNDER &amp; CEO</div>
+      <div class="team-role">Founder &amp; CEO</div>
       <div class="team-bio">
-        <strong>CS @Penn.</strong> Former software engineer at <strong>ByteDance</strong>. Based in San Francisco. Backed by <strong>Brock Pierce</strong> (Tether co-founder) and <strong>DNA Fund</strong>.
-        <br><br>
-        Built the entire protocol solo in 3 months — smart contracts, agent coordination layer, web dashboard, CLI demo, and design system. Looking for a technical co-founder with deep DeFi or ZK experience.
+        <strong>CS @Penn. Ex-ByteDance.</strong> San Francisco.<br>
+        Backed by <strong>Brock Pierce</strong> (Tether co-founder) &amp; <strong>DNA Fund</strong>.<br><br>
+        Built entire protocol solo — contracts, agents, dashboard, design system.
       </div>
     </div>
-    <div class="slide-number">10 / 11</div>
+    <div class="page-num">10 / 11</div>
   </div>
 
-  <!-- SLIDE 11: The Ask -->
+  <!-- 11: Ask -->
   <div class="slide" data-slide="11">
     <div class="slide-label">THE ASK</div>
-    <h1>Building the <span class="accent">Visa network</span> for the AI economy.</h1>
+    <h1>Building the <span class="accent">Visa network</span><br>for the AI economy.</h1>
     <div class="ask-box">
       <div class="ask-amount">$2M</div>
       <div class="ask-type">Pre-Seed Round</div>
       <ul class="ask-uses">
-        <li>Hire founding engineer (ZK / Solidity)</li>
-        <li>Production ZK integration + mainnet deployment</li>
-        <li>Enterprise pilot with 2-3 AI agent platforms</li>
-        <li>Seed initial liquidity pool</li>
-        <li>12-month runway</li>
+        <li>Founding engineer (ZK / Solidity)</li>
+        <li>Mainnet deployment + ZK integration</li>
+        <li>Enterprise pilots (2-3 agent platforms)</li>
+        <li>Seed liquidity pool</li>
       </ul>
     </div>
-    <div style="margin-top: 48px;">
-      <div style="font-size: 16px; color: #b9ccb2;">
-        <span style="color: #00FF41;">yanweicheng75@gmail.com</span> &nbsp;&nbsp;·&nbsp;&nbsp;
-        <span style="color: #84967e;">github.com/troyrocket/parallel-universe</span> &nbsp;&nbsp;·&nbsp;&nbsp;
-        <span style="color: #84967e;">troyrocket.github.io/parallel-universe</span>
-      </div>
+    <div class="contact">
+      <span class="green">yanweicheng75@gmail.com</span> &nbsp;·&nbsp;
+      github.com/troyrocket/parallel-universe
     </div>
-    <div class="slide-number">11 / 11</div>
+    <div class="page-num">11 / 11</div>
   </div>
 
 </div>
@@ -770,23 +728,18 @@
     if (e.key === 'End') goTo(total - 1);
   });
 
-  // Touch support
   let touchStartX = 0;
   document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
   document.addEventListener('touchend', (e) => {
     const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      diff > 0 ? goTo(current + 1) : goTo(current - 1);
-    }
+    if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
   });
 
-  // Click to advance
   document.addEventListener('click', (e) => {
     if (e.clientX > window.innerWidth / 2) goTo(current + 1);
     else goTo(current - 1);
   });
 
-  // Init progress
   progress.style.width = '0%';
 </script>
 
