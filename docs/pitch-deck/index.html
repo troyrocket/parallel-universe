@@ -24,14 +24,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 80px 10vw;
+    padding: 80px 8vw;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.5s ease;
   }
   .slide.active { opacity: 1; pointer-events: auto; }
 
-  /* Cover is the only centered slide */
   .slide.cover {
     align-items: center;
     text-align: center;
@@ -39,7 +38,7 @@
 
   /* Label */
   .slide-label {
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: #84967e;
@@ -67,13 +66,12 @@
 
   /* Typography */
   h1 {
-    font-size: 62px;
+    font-size: 60px;
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.12;
     color: #e2e2e2;
     margin-bottom: 32px;
-    max-width: 1000px;
   }
   h2 {
     font-size: 46px;
@@ -82,7 +80,6 @@
     line-height: 1.15;
     color: #e2e2e2;
     margin-bottom: 28px;
-    max-width: 950px;
   }
   .accent { color: #00FF41; }
   .sub {
@@ -100,7 +97,7 @@
   }
   .stat {
     background: #1b1b1b;
-    padding: 32px 44px;
+    padding: 32px 40px;
     border-left: 3px solid #00FF41;
   }
   .stat-value {
@@ -116,11 +113,16 @@
     text-transform: uppercase;
     color: #84967e;
   }
+  /* Stats inside two-col: stretch full width */
+  .stat-stack .stat {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .stat-stack .stat:last-child { margin-bottom: 0; }
 
   /* Bullet list */
   .bullets {
     list-style: none;
-    margin-top: 24px;
   }
   .bullets li {
     font-size: 20px;
@@ -171,9 +173,10 @@
 
   /* Weight bars */
   .weight-section { margin-top: 40px; max-width: 640px; }
-  .weight-row { margin-bottom: 20px; }
+  .weight-row { margin-bottom: 24px; }
+  .weight-row:last-child { margin-bottom: 0; }
   .weight-label {
-    font-size: 13px;
+    font-size: 14px;
     color: #84967e;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -183,24 +186,23 @@
   .seg-real {
     background: #00FF41;
     display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 600; color: #003907;
+    font-size: 13px; font-weight: 600; color: #003907;
     letter-spacing: 0.08em; text-transform: uppercase;
   }
   .seg-chain {
     background: #1b1b1b;
     border: 1px solid #00FF41;
     display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 600; color: #00FF41;
+    font-size: 13px; font-weight: 600; color: #00FF41;
     letter-spacing: 0.08em; text-transform: uppercase;
   }
 
   /* Two col */
   .two-col {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
     margin-top: 32px;
-    max-width: 1100px;
     width: 100%;
     align-items: start;
   }
@@ -232,7 +234,6 @@
   .data-table {
     margin-top: 28px;
     border-collapse: collapse;
-    max-width: 780px;
     width: 100%;
   }
   .data-table th {
@@ -245,7 +246,7 @@
     border-bottom: 1px solid #3b4b37;
   }
   .data-table td {
-    font-size: 17px;
+    font-size: 18px;
     color: #e2e2e2;
     padding: 16px 20px;
     border-bottom: 1px solid rgba(59, 75, 55, 0.12);
@@ -254,6 +255,7 @@
     color: #00FF41;
     font-weight: 600;
     white-space: nowrap;
+    width: 180px;
   }
 
   /* Callout */
@@ -272,7 +274,7 @@
     margin-bottom: 12px;
   }
   .callout-body {
-    font-size: 18px;
+    font-size: 19px;
     color: #b9ccb2;
     line-height: 1.7;
   }
@@ -308,10 +310,8 @@
   /* Ask */
   .ask-box {
     background: #1b1b1b;
-    padding: 48px 56px;
+    padding: 44px 48px;
     border-left: 3px solid #00FF41;
-    margin-top: 32px;
-    max-width: 560px;
   }
   .ask-amount {
     font-size: 60px;
@@ -325,7 +325,7 @@
     color: #84967e;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .ask-uses { list-style: none; }
   .ask-uses li {
@@ -364,7 +364,7 @@
   }
   .cover-sub {
     margin-top: 28px;
-    font-size: 19px;
+    font-size: 20px;
     color: #84967e;
     letter-spacing: 0.02em;
   }
@@ -379,19 +379,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 60px;
+    padding: 0 8vw;
     z-index: 100;
     border-bottom: 1px solid rgba(59, 75, 55, 0.12);
   }
   .top-bar-brand {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: #00FF41;
     font-weight: 600;
   }
   .top-bar-info {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.15em;
     color: #84967e;
     text-transform: uppercase;
@@ -408,7 +408,7 @@
   }
 
   .contact {
-    margin-top: 44px;
+    margin-top: 40px;
     font-size: 16px;
     color: #84967e;
   }
@@ -426,7 +426,7 @@
 
 <div class="deck" id="deck">
 
-  <!-- 00: Cover (centered) -->
+  <!-- 00: Cover -->
   <div class="slide cover active" data-slide="0">
     <div class="cover-logo"><span class="cursor">>_</span> PARALLEL_UNIVERSE</div>
     <div class="cover-tagline">The credit &amp; financial layer for your <span class="accent">Digital Self</span></div>
@@ -528,17 +528,17 @@
     <div class="slide-label">WHY NOW</div>
     <h1>Three forces <span class="accent">converging</span></h1>
     <div class="two-col">
-      <ul class="bullets" style="margin-top: 0;">
+      <ul class="bullets">
         <li><strong>Agents are economic actors</strong> — OpenAI Operator, Anthropic, Gemini</li>
         <li><strong>ZK proofs are production-ready</strong> — Reclaim, tlsnotary</li>
         <li><strong>Stablecoin rails are mature</strong> — Tether WDK, agent wallets</li>
       </ul>
-      <div>
-        <div class="stat" style="margin-bottom: 20px;">
+      <div class="stat-stack">
+        <div class="stat">
           <div class="stat-value">$4.6T</div>
           <div class="stat-label">Agent Economy 2028</div>
         </div>
-        <div class="stat" style="margin-bottom: 20px;">
+        <div class="stat">
           <div class="stat-value">82%</div>
           <div class="stat-label">Enterprises adding agents by 2027</div>
         </div>
@@ -595,18 +595,18 @@
     <div class="slide-label">BUSINESS MODEL</div>
     <h1>Protocol-level <span class="accent">revenue capture</span></h1>
     <div class="two-col">
-      <ul class="bullets" style="margin-top: 0;">
+      <ul class="bullets">
         <li><strong>Interest spread</strong> on every loan</li>
         <li><strong>Verification fees</strong> per ZK proof</li>
         <li><strong>Risk reserve yield</strong> — 10% of interest</li>
         <li><strong>Enterprise SaaS</strong> — fleet management</li>
       </ul>
-      <div>
-        <div class="stat" style="margin-bottom: 20px;">
+      <div class="stat-stack">
+        <div class="stat">
           <div class="stat-value">10%</div>
           <div class="stat-label">Interest → Risk Reserve</div>
         </div>
-        <div class="stat" style="margin-bottom: 20px;">
+        <div class="stat">
           <div class="stat-value">80%</div>
           <div class="stat-label">Utilization Kink Point</div>
         </div>
@@ -626,7 +626,7 @@
     <div class="two-col">
       <div>
         <div class="col-title">Done</div>
-        <ul class="bullets" style="margin-top: 0;">
+        <ul class="bullets">
           <li>6 contracts deployed on Sepolia</li>
           <li>5 agents — full lending lifecycle</li>
           <li>Web dashboard + CLI demo</li>
@@ -636,7 +636,7 @@
       </div>
       <div>
         <div class="col-title muted">Next</div>
-        <ul class="bullets" style="margin-top: 0;">
+        <ul class="bullets">
           <li>Production ZK (Reclaim / tlsnotary)</li>
           <li>Mainnet deployment (L2)</li>
           <li>Enterprise API</li>
@@ -667,23 +667,23 @@
   <div class="slide" data-slide="11">
     <div class="slide-label">THE ASK</div>
     <h1>Building the <span class="accent">Visa network</span><br>for the AI economy.</h1>
-    <div class="two-col" style="align-items: start; margin-top: 8px;">
-      <div class="ask-box" style="margin-top: 0;">
+    <div class="two-col">
+      <div class="ask-box">
         <div class="ask-amount">$2M</div>
         <div class="ask-type">Pre-Seed Round</div>
         <ul class="ask-uses">
           <li>Founding engineer (ZK / Solidity)</li>
           <li>Mainnet deployment + ZK integration</li>
-          <li>Enterprise pilots (2-3 agent platforms)</li>
+          <li>Enterprise pilots (2-3 platforms)</li>
           <li>Seed liquidity pool</li>
         </ul>
       </div>
-      <div style="padding-top: 12px;">
-        <div class="stat" style="margin-bottom: 20px;">
+      <div class="stat-stack">
+        <div class="stat">
           <div class="stat-value">6</div>
           <div class="stat-label">Contracts on Sepolia</div>
         </div>
-        <div class="stat" style="margin-bottom: 20px;">
+        <div class="stat">
           <div class="stat-value">5</div>
           <div class="stat-label">Autonomous Agents</div>
         </div>
